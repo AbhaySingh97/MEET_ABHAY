@@ -29,6 +29,7 @@ mongoose.connect(MONGO_URI)
 const projects = require('./data/projects');
 const journey = require('./data/journey');
 const stats = require('./data/stats');
+const socials = require('./data/socials');
 
 // Routes
 app.get('/api/projects', (req, res) => {
@@ -41,6 +42,10 @@ app.get('/api/journey', (req, res) => {
 
 app.get('/api/stats', (req, res) => {
     res.json(stats);
+});
+
+app.get('/api/socials', (req, res) => {
+    res.json(socials);
 });
 
 // Testimonials: Fetch from DB

@@ -6,7 +6,7 @@ const Journey = () => {
     const [journey, setJourney] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/journey')
+        fetch('/api/journey')
             .then(res => res.json())
             .then(data => setJourney(data))
             .catch(err => console.error('Error fetching journey:', err));

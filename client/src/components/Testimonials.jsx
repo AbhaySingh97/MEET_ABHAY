@@ -6,7 +6,7 @@ const Testimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/testimonials')
+        fetch('/api/testimonials')
             .then(res => res.json())
             .then(data => {
                 if (Array.isArray(data)) {

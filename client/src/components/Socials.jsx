@@ -8,7 +8,7 @@ const Socials = () => {
     const [socials, setSocials] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/socials')
+        fetch('/api/socials')
             .then(res => res.json())
             .then(data => setSocials(data))
             .catch(err => console.error('Error fetching socials:', err));
