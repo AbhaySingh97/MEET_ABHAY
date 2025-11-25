@@ -84,11 +84,7 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-// Serve static assets if in production
+// Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
     // Set static folder
     app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -97,3 +93,14 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
     });
 }
+
+// Export for Vercel serverless
+module.exports = app;
+
+// Only listen if not in serverless environment
+if (process.env.VERCEL !== '1') {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}
+
