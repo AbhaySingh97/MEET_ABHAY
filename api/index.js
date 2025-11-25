@@ -18,13 +18,44 @@ app.use(express.json());
 // MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI;
 
-if (MONGO_URI) {
-    mongoose.connect(MONGO_URI)
-        .then(() => console.log('MongoDB Connected'))
-        .catch(err => console.error('MongoDB Connection Error:', err));
-} else {
-    console.warn('MONGO_URI not found in environment variables');
+let cachedDb = null;
+
+async function connectToDatabase() {
+    if (cachedDb) {
+        return cachedDb;
+    }
+
+    if (!MONGO_URI) {
+        throw new Error('MONGO_URI not found in environment variables');
+    }
+
+    try {
+        const db = await mongoose.connect(MONGO_URI);
+        cachedDb = db;
+        console.log('MongoDB Connected');
+        return db;
+    } catch (err) {
+        console.error('MongoDB Connection Error:', err);
+        throw err;
+    }
 }
+
+// Ensure DB is connected for every request that needs it
+app.use(async (req, res, next) => {
+    // Skip DB connection for health check and static data
+    if (req.path === '/api' || req.path === '/api/projects' || req.path === '/api/journey' || req.path === '/api/stats' || req.path === '/api/socials') {
+        return next();
+    }
+
+    try {
+        await connectToDatabase();
+        next();
+    } catch (err) {
+        console.error('DB Middleware Error:', err);
+        // Don't block the request, let the specific route handle the error if it needs DB
+        next();
+    }
+});
 
 // Static Data (Embedded for Vercel Reliability)
 const projects = [
@@ -255,15 +286,17 @@ app.post('/api/contact', async (req, res) => {
     const { name, email, message } = req.body;
     try {
         if (mongoose.connection.readyState !== 1) {
-            throw new Error('Database not connected');
+            await connectToDatabase(); // Try to connect again if not ready
         }
+
         const newFeedback = new Feedback({ name, email, message });
         await newFeedback.save();
         console.log('Feedback Saved:', { name, email });
         res.json({ success: true, message: 'Message received and saved!' });
     } catch (err) {
         console.error('Error processing contact form:', err);
-        res.status(500).json({ message: err.message });
+        // Return the specific error message to the client for debugging
+        res.status(500).json({ success: false, message: err.message || 'Server error' });
     }
 });
 
