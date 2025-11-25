@@ -1,0 +1,99 @@
+.skills {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #FFF8E7 0%, #FFE8CC 50%, #FFF8E7 100%);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    font-family: var(--font-handwritten);
+}
+
+.skills-category {
+    margin-bottom: 4rem;
+}
+
+.skills-category:last-child {
+    margin-bottom: 0;
+}
+
+.category-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    font-family: var(--font-handwritten);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    border: 3px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 3px 3px 0px rgba(61, 64, 91, 0.2);
+}
+
+.skill-card:nth-child(odd) {
+    transform: rotate(-2deg);
+}
+
+.skill-card:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.skill-card:hover {
+    transform: rotate(0deg) translateY(-8px) scale(1.05);
+    background: var(--secondary-color);
+    color: white;
+    box-shadow: 5px 5px 0px rgba(61, 64, 91, 0.3);
+}
+
+.skill-card:hover .icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.skill-card:hover p {
+    color: white;
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.skill-card p {
+    font-weight: bold;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    transition: color 0.3s ease;
+}

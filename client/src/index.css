@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Indie+Flower&family=Quicksand:wght@400;600;700&display=swap');
+
+:root {
+  /* Warm, earthy color palette */
+  --bg-color: #FFF8E7;
+  --text-color: #3D405B;
+  --primary-color: #E07A5F;
+  --secondary-color: #81B29A;
+  --accent-color: #F4A261;
+  --card-bg: #FFFBF5;
+  --border-color: #3D405B;
+
+  /* Fonts */
+  --font-main: 'Quicksand', sans-serif;
+  --font-handwritten: 'Caveat', cursive;
+  --font-playful: 'Indie Flower', cursive;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(61, 64, 91, 0.02) 2px,
+      rgba(61, 64, 91, 0.02) 4px);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+  border: 2px solid var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Sketchy border utility class */
+.sketchy-border {
+  position: relative;
+  border: 3px solid var(--border-color);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+/* Hand-drawn underline effect */
+.sketchy-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.sketchy-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  transform: scaleX(1.05);
+}
