@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import logo from '../assets/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -24,14 +25,24 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="nav-container">
-                <motion.h1
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="logo"
-                    whileHover={{ color: getRandomColor() }}
-                >
-                    MEET ABHAY
-                </motion.h1>
+                <div className="logo-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <motion.img
+                        src={logo}
+                        alt="meet_abhay logo"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="logo-img"
+                        style={{ height: '40px', width: 'auto' }}
+                    />
+                    <motion.h1
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="logo"
+                        whileHover={{ color: getRandomColor() }}
+                    >
+                        meet_abhay
+                    </motion.h1>
+                </div>
 
                 <div className="desktop-menu">
                     {navLinks.map((link, index) => (
