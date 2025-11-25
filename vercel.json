@@ -19,21 +19,16 @@
             "dest": "server/index.js"
         },
         {
+            "src": "/assets/(.*)",
+            "dest": "client/dist/assets/$1"
+        },
+        {
             "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|webp|ico|woff|woff2|ttf|eot))",
             "dest": "client/dist/$1"
         },
         {
             "src": "/(.*)",
             "dest": "client/dist/index.html"
-        }
-    ],
-    "env": {
-        "NODE_ENV": "production"
-    },
-    "rewrites": [
-        {
-            "source": "/api/(.*)",
-            "destination": "/server/index.js"
         }
     ]
 }
