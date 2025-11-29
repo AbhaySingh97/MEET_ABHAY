@@ -58,7 +58,8 @@ app.use(async (req, res, next) => {
     }
 });
 
-// Static Data (Embedded for Vercel Reliability)
+// Static Data (Embedded for Vercel Reliability) - Updated with Enterprise HMS
+
 const projects = [
     {
         id: 6,
