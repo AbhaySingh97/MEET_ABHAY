@@ -141,7 +141,7 @@ const Projects = () => {
                                         rel="noopener noreferrer"
                                         className="modal-external-link"
                                     >
-                                        View on ArtStation →
+                                        {selectedProject.category === 'tech' ? 'View Live Project →' : 'View on ArtStation →'}
                                     </a>
                                 )}
                             </div>
