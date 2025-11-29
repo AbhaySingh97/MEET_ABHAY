@@ -1,23 +1,5 @@
 const projects = [
     {
-        id: 6,
-        title: "Enterprise HMS",
-        category: "tech",
-        description: "Comprehensive Hospital Management System with role-based access, appointment booking, and AI-powered chatbot assistance.",
-        fullDescription: "Enterprise HMS is a full-stack Hospital Management System designed to streamline healthcare operations with cutting-edge technology and user-centric design. Built with React, Node.js, Express, and MongoDB, this platform delivers a seamless experience for patients, doctors, and administrators.\n\nThe system features secure authentication with Firebase Google Sign-In, role-based dashboards for different user types, and an intelligent AI chatbot powered by OpenRouter API that provides instant answers to healthcare queries. The chatbot seamlessly integrates with a local database of legal articles and medical information, falling back to AI when needed.\n\nWith a modern, responsive UI featuring glassmorphism effects, gradient animations, and smooth transitions, Enterprise HMS demonstrates the perfect blend of functionality and aesthetics. The platform includes real-time appointment booking, patient record management, doctor scheduling, and comprehensive analytics tracking.",
-        tech: ["React", "Node.js", "Express", "MongoDB", "Firebase Auth", "OpenRouter AI", "Vite"],
-        image: "/enterprise-hms.png",
-        link: "#",
-        achievements: [
-            "Role-based authentication system (Patient, Doctor, Admin)",
-            "AI-powered chatbot with OpenRouter integration",
-            "Real-time appointment booking and management",
-            "Responsive design with modern UI/UX principles",
-            "Secure Firebase Google Sign-In integration",
-            "MongoDB Atlas cloud database integration"
-        ]
-    },
-    {
         id: 1,
         title: "Smart Bazar",
         category: "tech",
