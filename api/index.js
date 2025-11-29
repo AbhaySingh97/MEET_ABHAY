@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 // Models
 const Feedback = require('./models/Feedback');
 const Testimonial = require('./models/Testimonial');
+const Analytics = require('./models/Analytics');
 
 dotenv.config();
 
@@ -59,6 +60,24 @@ app.use(async (req, res, next) => {
 
 // Static Data (Embedded for Vercel Reliability)
 const projects = [
+    {
+        id: 6,
+        title: "Enterprise HMS",
+        category: "tech",
+        description: "Comprehensive Hospital Management System with role-based access, appointment booking, and AI-powered chatbot assistance.",
+        fullDescription: "Enterprise HMS is a full-stack Hospital Management System designed to streamline healthcare operations with cutting-edge technology and user-centric design. Built with React, Node.js, Express, and MongoDB, this platform delivers a seamless experience for patients, doctors, and administrators.\n\nThe system features secure authentication with Firebase Google Sign-In, role-based dashboards for different user types, and an intelligent AI chatbot powered by OpenRouter API that provides instant answers to healthcare queries. The chatbot seamlessly integrates with a local database of legal articles and medical information, falling back to AI when needed.\n\nWith a modern, responsive UI featuring glassmorphism effects, gradient animations, and smooth transitions, Enterprise HMS demonstrates the perfect blend of functionality and aesthetics. The platform includes real-time appointment booking, patient record management, doctor scheduling, and comprehensive analytics tracking.",
+        tech: ["React", "Node.js", "Express", "MongoDB", "Firebase Auth", "OpenRouter AI", "Vite"],
+        image: "/enterprise-hms.png",
+        link: "#",
+        achievements: [
+            "Role-based authentication system (Patient, Doctor, Admin)",
+            "AI-powered chatbot with OpenRouter integration",
+            "Real-time appointment booking and management",
+            "Responsive design with modern UI/UX principles",
+            "Secure Firebase Google Sign-In integration",
+            "MongoDB Atlas cloud database integration"
+        ]
+    },
     {
         id: 1,
         title: "Smart Bazar",
@@ -297,6 +316,59 @@ app.post('/api/contact', async (req, res) => {
         console.error('Error processing contact form:', err);
         // Return the specific error message to the client for debugging
         res.status(500).json({ success: false, message: err.message || 'Server error' });
+    }
+});
+
+// Analytics: Track Visit
+app.post('/api/analytics/track', async (req, res) => {
+    const { visitorId, sessionId, page, source } = req.body;
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
+    try {
+        if (mongoose.connection.readyState !== 1) {
+            await connectToDatabase();
+        }
+        const newVisit = new Analytics({
+            visitorId,
+            sessionId,
+            page,
+            source,
+            ip
+        });
+        await newVisit.save();
+        res.status(201).json({ success: true });
+    } catch (err) {
+        console.error('Tracking Error:', err);
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Analytics: Get Stats
+app.get('/api/analytics/stats', async (req, res) => {
+    try {
+        if (mongoose.connection.readyState !== 1) {
+            await connectToDatabase();
+        }
+
+        const pageViews = await Analytics.countDocuments();
+        const uniqueVisitors = (await Analytics.distinct('visitorId')).length;
+        const totalVisitors = (await Analytics.distinct('sessionId')).length;
+
+        const sources = await Analytics.aggregate([
+            { $group: { _id: "$source", count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            { $limit: 5 }
+        ]);
+
+        res.json({
+            pageViews,
+            uniqueVisitors,
+            totalVisitors,
+            sources: sources.map(s => ({ name: s._id || 'Direct', count: s.count }))
+        });
+    } catch (err) {
+        console.error('Stats Error:', err);
+        res.status(500).json({ message: err.message });
     }
 });
 
