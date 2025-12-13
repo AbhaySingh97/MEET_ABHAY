@@ -10,11 +10,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import BouncingBall from './components/BouncingBall';
+import useAnalytics from './hooks/useAnalytics';
 import './App.css';
 
 import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
+  useAnalytics();
+
   // Scroll to top on page load/refresh
   useEffect(() => {
     window.scrollTo(0, 0);

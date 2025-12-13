@@ -31,6 +31,26 @@ const projects = [
         ]
     },
     {
+        id: 6,
+        title: "Legal Advisory Platform",
+        category: "tech",
+        description: "AI-powered legal advisory platform for navigating Indian Constitution, case laws, and legal procedures with intelligent guidance.",
+        fullDescription: "A comprehensive legal advisory platform that democratizes access to legal knowledge by providing AI-powered guidance on the Indian Constitution, landmark case laws, and legal procedures.\n\nThe platform features an intelligent chatbot powered by advanced NLP and RAG (Retrieval-Augmented Generation) architecture, enabling users to query complex legal topics and receive accurate, contextual responses. It includes a searchable library of 120+ constitutional articles, 25+ landmark cases with detailed explanations, and 20+ legal procedures.\n\nBuilt with a modern tech stack combining Next.js for the frontend and FastAPI for the backend, the platform demonstrates enterprise-grade architecture with vector databases for semantic search, async processing for optimal performance, and a scalable microservices design ready for horizontal scaling.\n\nThe system uses PostgreSQL for structured data, implements intelligent fallback mechanisms with AI models, and features a responsive, accessible UI with dark mode support and multilingual capabilities (English/Hindi).",
+        tech: ["Next.js", "FastAPI", "PostgreSQL", "Python", "NLP", "RAG", "Vector DB", "SQLAlchemy", "Tailwind CSS"],
+        image: "/legal-advisory.jpg",
+        link: "#",
+        achievements: [
+            "120+ Constitutional Articles with detailed descriptions",
+            "25+ Landmark Cases with comprehensive explanations",
+            "20+ Legal Procedures documented",
+            "AI-powered chatbot with RAG architecture",
+            "Vector database for semantic search",
+            "Scalable microservices architecture",
+            "Multilingual support (EN/HI)",
+            "Responsive design with dark mode"
+        ]
+    },
+    {
         id: 4,
         title: "Carrier Takeoff: Sunset Sortie",
         category: "creative",

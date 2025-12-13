@@ -8,6 +8,7 @@ const path = require('path');
 // Models
 const Feedback = require('./models/Feedback');
 const Testimonial = require('./models/Testimonial');
+const Analytics = require('./models/Analytics');
 
 dotenv.config();
 
@@ -80,6 +81,52 @@ app.post('/api/contact', async (req, res) => {
         res.json({ success: true, message: 'Message received and saved!' });
     } catch (err) {
         console.error('Error processing contact form:', err);
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Analytics: Track Visit
+app.post('/api/analytics/track', async (req, res) => {
+    const { visitorId, sessionId, page, source } = req.body;
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
+    try {
+        const newVisit = new Analytics({
+            visitorId,
+            sessionId,
+            page,
+            source,
+            ip
+        });
+        await newVisit.save();
+        res.status(201).json({ success: true });
+    } catch (err) {
+        console.error('Tracking Error:', err);
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Analytics: Get Stats
+app.get('/api/analytics/stats', async (req, res) => {
+    try {
+        const pageViews = await Analytics.countDocuments();
+        const uniqueVisitors = (await Analytics.distinct('visitorId')).length;
+        const totalVisitors = (await Analytics.distinct('sessionId')).length;
+
+        const sources = await Analytics.aggregate([
+            { $group: { _id: "$source", count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            { $limit: 5 }
+        ]);
+
+        res.json({
+            pageViews,
+            uniqueVisitors,
+            totalVisitors,
+            sources: sources.map(s => ({ name: s._id || 'Direct', count: s.count }))
+        });
+    } catch (err) {
+        console.error('Stats Error:', err);
         res.status(500).json({ message: err.message });
     }
 });
