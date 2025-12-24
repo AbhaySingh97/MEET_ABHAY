@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { useTypewriter } from '../hooks/useTypewriter';
+import { useDecryption } from '../hooks/useDecryption';
+import { useTypewriter } from '../hooks/useTypewriter'; // Keep for simple text if needed, or remove if unused.
 import './Hero.css';
 
 const Hero = () => {
-    const greeting = useTypewriter("Hello, I'm ", 80, 300);
-    const name = useTypewriter("Abhay Singh Chauhan", 100, 1500);
-    const role = useTypewriter("3D Artist & Full Stack Developer", 80, 3500);
+    const greeting = useTypewriter("Hello, I'm ", 80, 300); // Keep typewriter for "Hello, I'm" as acts as setup
+    const name = useDecryption("Abhay Singh Chauhan", 50, 1000); // Decrypt name
+    const role = useDecryption("3D Artist & Full Stack Developer", 40, 2500); // Decrypt role
 
     return (
         <section id="home" className="hero">
@@ -21,16 +22,15 @@ const Hero = () => {
                         {!greeting.isComplete && <span className="cursor">|</span>}
                         <span className="highlight">
                             {name.displayedText}
-                            {greeting.isComplete && !name.isComplete && <span className="cursor">|</span>}
+                            {/* Cursor for name is less relevant in decryption mode, but can keep for style if incomplete */}
                         </span>
                     </h2>
                     <motion.h1
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: name.isComplete ? 1 : 0 }}
+                        animate={{ opacity: greeting.isComplete ? 1 : 0 }} // Start showing role container roughly when greeting done
                         transition={{ duration: 0.5 }}
                     >
                         {role.displayedText}
-                        {name.isComplete && !role.isComplete && <span className="cursor">|</span>}
                     </motion.h1>
                     <p>Building digital experiences with modern technologies.</p>
                     <motion.a
