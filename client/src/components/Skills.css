@@ -5,8 +5,8 @@
 
 .section-title {
     text-align: center;
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
     color: var(--text-color);
     font-family: var(--font-handwritten);
 }
@@ -21,8 +21,8 @@
 
 .category-title {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
     color: var(--primary-color);
     font-family: var(--font-handwritten);
     position: relative;
@@ -44,21 +44,21 @@
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    max-width: 1000px;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .skill-card {
     background: var(--card-bg);
     border: 3px solid var(--border-color);
-    padding: 2rem;
+    padding: 1.25rem 0.75rem;
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .skill-card:nth-child(odd) {
@@ -85,8 +85,8 @@
 }
 
 .icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
     transition: transform 0.3s ease;
     display: inline-block;
 }
