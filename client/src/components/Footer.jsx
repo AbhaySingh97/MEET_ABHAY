@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
 import './Footer.css';
-import { FaLinkedin, FaUsers, FaEye, FaGlobe, FaChartLine } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
 import { SiCodechef, SiArtstation } from 'react-icons/si';
 
 const Footer = () => {
