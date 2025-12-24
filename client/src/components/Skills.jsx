@@ -1,28 +1,25 @@
-import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJs, FaCode, FaDatabase } from 'react-icons/fa';
-import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma } from 'react-icons/si';
-import { FaCube, FaLayerGroup, FaPaintBrush } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJs, FaCode, FaDatabase, FaBolt, FaCube, FaLayerGroup, FaPaintBrush } from 'react-icons/fa';
+import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreedotjs } from 'react-icons/si';
 import './Skills.css';
 
 const Skills = () => {
     const techSkills = [
         { name: 'React', icon: <FaReact color="#61DAFB" /> },
         { name: 'Node.js', icon: <FaNodeJs color="#68A063" /> },
-        { name: 'Express', icon: <SiExpress color="#fff" /> },
+        { name: 'Express', icon: <SiExpress color="#808080" /> },
+        { name: 'Socket.io', icon: <SiSocketdotio color="#010101" /> },
         { name: 'MongoDB', icon: <SiMongodb color="#47A248" /> },
-        { name: 'HTML', icon: <FaHtml5 color="#E34F26" /> },
-        { name: 'CSS', icon: <FaCss3 color="#1572B6" /> },
+        { name: 'Three.js', icon: <SiThreedotjs color="#000000" /> },
         { name: 'JavaScript', icon: <FaJs color="#F7DF1E" /> },
-        { name: 'Full Stack Dev', icon: <FaCode color="#00FF00" /> },
+        { name: 'Full Stack', icon: <FaCode color="#FF4500" /> },
     ];
 
     const creativeSkills = [
         { name: '3D Artist', icon: <FaCube color="#FFD700" /> },
-        { name: '3D Generalist', icon: <FaLayerGroup color="#FF69B4" /> },
         { name: 'Blender', icon: <SiBlender color="#E87D0D" /> },
-        { name: 'Unreal Engine 5', icon: <SiUnrealengine color="#fff" /> },
-        { name: 'Canva', icon: <SiCanva color="#00C4CC" /> },
-        { name: 'Figma', icon: <SiFigma color="#F24E1E" /> },
+        { name: 'Unreal Engine', icon: <SiUnrealengine color="#333" /> },
+        { name: 'UI/UX', icon: <SiFigma color="#F24E1E" /> },
+        { name: 'Design', icon: <SiCanva color="#00C4CC" /> },
     ];
 
     return (
