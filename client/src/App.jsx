@@ -10,6 +10,10 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import BouncingBall from './components/BouncingBall';
+import ErrorBoundary from './components/ErrorBoundary';
+import { ThemeProvider } from './config/ThemeContext';
+import './App.css';
+
 function App() {
 
   // Scroll to top on page load/refresh

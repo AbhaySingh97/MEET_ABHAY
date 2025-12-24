@@ -7,7 +7,7 @@ const projects = [
         fullDescription: "Sometimes the most meaningful ideas begin casually. Sparked by a simple curiosity to play common games with friends far away, this project evolved into a complete Real-Time Multiplayer Gaming Platform.\n\nThe platform supports both SinglePlayer and Online Two-Player modes where users can create rooms and join using shared codes. It features a diverse collection of game modes ranging from classic board games to immersive 3D environments.\n\nBuilt with React 19 and Node.js, it leverages Socket.io for seamless real-time synchronization, multiplayer state management, and an integrated in-game chat system. The UI follows a distinct Cyber-Arcade aesthetic, crafted entirely with Custom CSS.\n\nA key highlight is the 'Survival City' mode, a third-person open-world driving experience featuring physics-based vehicle controls, a dynamic day/night cycle, and cross-platform compatibility with Pointer-lock for desktop and virtual joysticks for mobile.",
         tech: ["React 19", "Node.js", "Socket.io", "Express", "Three.js", "Custom CSS"],
         image: "/multiplayer-platform.png",
-        link: "https://multiplayer-game-hub.vercel.app/",
+        link: "https://arcaderealm.vercel.app/",
         achievements: [
             "Real-time room-based matchmaking system",
             "Cross-platform support (Desktop & Mobile)",
