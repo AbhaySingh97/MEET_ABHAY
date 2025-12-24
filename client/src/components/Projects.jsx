@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ModelViewer from './ModelViewer';
 import TiltCard from './TiltCard';
 import './Projects.css';
 
@@ -7,6 +8,7 @@ const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [activeCategory, setActiveCategory] = useState('tech');
     const [selectedProject, setSelectedProject] = useState(null);
+    const [activeMedia, setActiveMedia] = useState('image');
 
     useEffect(() => {
         fetch('/api/projects')
@@ -19,6 +21,7 @@ const Projects = () => {
 
     const openModal = (project) => {
         setSelectedProject(project);
+        setActiveMedia('image');
         document.body.style.overflow = 'hidden';
     };
 
@@ -111,56 +114,79 @@ const Projects = () => {
                             <button className="modal-close" onClick={closeModal}>×</button>
 
                             <div className="modal-header">
-                                <img
-                                    src={selectedProject.image}
-                                    alt={selectedProject.title}
-                                    className="modal-img"
-                                />
+                                {selectedProject.category === 'creative' && activeMedia === 'model' ? (
+                                    <ModelViewer modelPath="/models/robot.glb" />
+                                ) : (
+                                    <img
+                                        src={selectedProject.image}
+                                        alt={selectedProject.title}
+                                        className="modal-img"
+                                    />
+                                )}
                             </div>
 
                             <div className="modal-body">
-                                h2>{selectedProject.title}</h2>
-
-                            <div className="modal-tech-stack">
-                                {selectedProject.tech.map((t, i) => (
-                                    <span key={i} className="tech-tag">{t}</span>
-                                ))}
-                            </div>
-
-                            <div className="modal-description">
-                                {selectedProject.fullDescription.split('\n\n').map((paragraph, i) => (
-                                    <p key={i}>{paragraph}</p>
-                                ))}
-                            </div>
-
-                            {selectedProject.achievements && (
-                                <div className="modal-achievements">
-                                    <h3>Key Highlights</h3>
-                                    <ul>
-                                        {selectedProject.achievements.map((achievement, i) => (
-                                            <li key={i}>{achievement}</li>
-                                        ))}
-                                    </ul>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <h2>{selectedProject.title}</h2>
+                                    {selectedProject.category === 'creative' && (
+                                        <div className="view-toggles">
+                                            <button
+                                                onClick={() => setActiveMedia('image')}
+                                                className={`toggle-btn ${activeMedia === 'image' ? 'active' : ''}`}
+                                                style={{ marginRight: '10px' }}
+                                            >
+                                                📷 Image
+                                            </button>
+                                            <button
+                                                onClick={() => setActiveMedia('model')}
+                                                className={`toggle-btn ${activeMedia === 'model' ? 'active' : ''}`}
+                                            >
+                                                🧊 3D View
+                                            </button>
+                                        </div>
+                                    )}
                                 </div>
-                            )}
 
-                            {selectedProject.link && selectedProject.link !== '#' && (
-                                <a
-                                    href={selectedProject.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="modal-external-link"
-                                >
-                                    {selectedProject.category === 'tech' || selectedProject.category === 'hybrid'
-                                        ? 'View Live Project →'
-                                        : 'View on ArtStation →'}
-                                </a>
-                            )}
-                        </div>
-                    </motion.div>
+                                <div className="modal-tech-stack">
+                                    {selectedProject.tech.map((t, i) => (
+                                        <span key={i} className="tech-tag">{t}</span>
+                                    ))}
+                                </div>
+
+                                <div className="modal-description">
+                                    {selectedProject.fullDescription.split('\n\n').map((paragraph, i) => (
+                                        <p key={i}>{paragraph}</p>
+                                    ))}
+                                </div>
+
+                                {selectedProject.achievements && (
+                                    <div className="modal-achievements">
+                                        <h3>Key Highlights</h3>
+                                        <ul>
+                                            {selectedProject.achievements.map((achievement, i) => (
+                                                <li key={i}>{achievement}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+
+                                {selectedProject.link && selectedProject.link !== '#' && (
+                                    <a
+                                        href={selectedProject.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="modal-external-link"
+                                    >
+                                        {selectedProject.category === 'tech' || selectedProject.category === 'hybrid'
+                                            ? 'View Live Project →'
+                                            : 'View on ArtStation →'}
+                                    </a>
+                                )}
+                            </div>
+                        </motion.div>
                     </motion.div>
                 )}
-        </AnimatePresence>
+            </AnimatePresence>
         </section >
     );
 };
