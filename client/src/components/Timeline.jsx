@@ -1,8 +1,4 @@
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaBriefcase, FaCode, FaRocket } from 'react-icons/fa';
-import './Timeline.css';
-
-import { motion } from 'framer-motion';
 import { FaGraduationCap, FaBriefcase, FaCode, FaRocket, FaLaptopCode } from 'react-icons/fa';
 import './Timeline.css';
 
