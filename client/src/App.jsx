@@ -20,8 +20,17 @@ function App() {
   useAnalytics();
 
   // Scroll to top on page load/refresh
+  // Scroll to top on page load/refresh
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
     window.scrollTo(0, 0);
+    return () => {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'auto';
+      }
+    };
   }, []);
   return (
     <ThemeProvider>
