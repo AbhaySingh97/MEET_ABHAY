@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJs, FaCode, FaDatabase, FaServer, FaGamepad } from 'react-icons/fa';
-import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreejs } from 'react-icons/si';
+import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreedotjs } from 'react-icons/si';
 import { FaCube, FaLayerGroup, FaPaintBrush } from 'react-icons/fa';
 import './Skills.css';
 
