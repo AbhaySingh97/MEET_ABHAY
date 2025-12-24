@@ -45,8 +45,19 @@ const SkillTree = () => {
     });
 
     return (
-        <div className="skill-tree-container" style={{ position: 'relative', height: '600px', width: '100%', overflow: 'hidden', background: '#0a0a0a', borderRadius: '20px', border: '1px solid #333' }}>
-            {/* SVG Connections */}
+        <div className="skill-tree-container"
+            style={{
+                position: 'relative',
+                height: '600px',
+                width: '100%',
+                overflow: 'hidden',
+                background: 'rgba(255, 255, 255, 0.4)', // Light semi-transparent bg
+                borderRadius: '20px',
+                border: '2px dashed var(--accent-color)', // Dashed border fits retro theme
+                boxShadow: 'inset 0 0 20px rgba(0,0,0,0.05)'
+            }}>
+
+            {/* SVG Connections - Darker lines for visibility on light bg */}
             <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
                 {connections.map((line, i) => (
                     <motion.line
@@ -55,9 +66,9 @@ const SkillTree = () => {
                         y1={line.from.y}
                         x2={line.to.x}
                         y2={line.to.y}
-                        stroke={line.color}
-                        strokeWidth="2"
-                        strokeOpacity="0.3"
+                        stroke="var(--secondary-color)"
+                        strokeWidth="3"
+                        strokeOpacity="0.4"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
                         transition={{ duration: 1.5, delay: 0.5 }}
@@ -78,39 +89,42 @@ const SkillTree = () => {
                         width: node.type === 'core' ? 80 : 60,
                         height: node.type === 'core' ? 80 : 60,
                         borderRadius: '50%',
-                        background: '#1a1a1a',
-                        border: `2px solid ${node.color}`,
+                        background: 'var(--bg-color)', // Match site background
+                        border: `3px solid ${node.color}`,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         cursor: 'pointer',
                         zIndex: 10,
-                        boxShadow: `0 0 15px ${node.color}40`
+                        boxShadow: `4px 4px 0px var(--text-color)` // Retro shadow
                     }}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    whileHover={{ scale: 1.2, boxShadow: `0 0 30px ${node.color}80` }}
+                    whileHover={{ scale: 1.15, transform: 'translate(-50%, -55%)', boxShadow: `6px 6px 0px ${node.color}` }}
                     onClick={() => setSelectedNode(node)}
                 >
-                    <div style={{ fontSize: node.type === 'core' ? '2rem' : '1.5rem', color: '#fff' }}>
+                    <div style={{ fontSize: node.type === 'core' ? '2rem' : '1.5rem', color: 'var(--text-color)' }}>
                         {node.icon || node.label[0]}
                     </div>
-                    {/* Tooltip Label */}
-                    <motion.div
-                        style={{
-                            position: 'absolute',
-                            top: '120%',
-                            background: 'rgba(0,0,0,0.8)',
-                            padding: '4px 8px',
-                            borderRadius: '4px',
-                            fontSize: '12px',
-                            whiteSpace: 'nowrap',
-                            pointerEvents: 'none'
-                        }}
-                    >
-                        {node.label}
-                    </motion.div>
                 </motion.div>
+            ))}
+
+            {/* Floating label for hover could be added here if needed, or stick to simpler UI */}
+            {nodes.map((node) => (
+                <div key={`label-${node.id}`} style={{
+                    position: 'absolute',
+                    left: node.x,
+                    top: node.y + 45,
+                    transform: 'translateX(-50%)',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.8rem',
+                    fontWeight: 'bold',
+                    color: 'var(--secondary-color)',
+                    pointerEvents: 'none',
+                    opacity: 0.8
+                }}>
+                    {node.label}
+                </div>
             ))}
         </div>
     );

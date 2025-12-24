@@ -4,6 +4,7 @@ import TiltCard from './TiltCard';
 import './Projects.css';
 
 const Projects = () => {
+    // Fix Vercel build syntax error
     const [projects, setProjects] = useState([]);
     const [activeCategory, setActiveCategory] = useState('tech');
     const [selectedProject, setSelectedProject] = useState(null);

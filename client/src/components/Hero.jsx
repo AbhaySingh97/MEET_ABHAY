@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
-import { useDecryption } from '../hooks/useDecryption';
-import { useTypewriter } from '../hooks/useTypewriter'; // Keep for simple text if needed, or remove if unused.
+import { useTypewriter } from '../hooks/useTypewriter';
 import './Hero.css';
 
 const Hero = () => {
-    const greeting = useTypewriter("Hello, I'm ", 80, 300); // Keep typewriter for "Hello, I'm" as acts as setup
-    const name = useDecryption("Abhay Singh Chauhan", 50, 1000); // Decrypt name
-    const role = useDecryption("3D Artist & Full Stack Developer", 40, 2500); // Decrypt role
+    const greeting = useTypewriter("Hello, I'm ", 80, 300);
+    const name = useTypewriter("Abhay Singh Chauhan", 80, 1500);
+    const role = useTypewriter("3D Artist & Full Stack Developer", 60, 3500);
 
     return (
         <section id="home" className="hero">
@@ -21,16 +20,21 @@ const Hero = () => {
                         {greeting.displayedText}
                         {!greeting.isComplete && <span className="cursor">|</span>}
                         <span className="highlight">
-                            {name.displayedText}
-                            {/* Cursor for name is less relevant in decryption mode, but can keep for style if incomplete */}
+                            {greeting.isComplete && (
+                                <>
+                                    {name.displayedText}
+                                    {!name.isComplete && <span className="cursor">|</span>}
+                                </>
+                            )}
                         </span>
                     </h2>
                     <motion.h1
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: greeting.isComplete ? 1 : 0 }} // Start showing role container roughly when greeting done
+                        animate={{ opacity: name.isComplete ? 1 : 0 }}
                         transition={{ duration: 0.5 }}
                     >
                         {role.displayedText}
+                        {!role.isComplete && name.isComplete && <span className="cursor main-cursor">|</span>}
                     </motion.h1>
                     <p>Building digital experiences with modern technologies.</p>
                     <motion.a
