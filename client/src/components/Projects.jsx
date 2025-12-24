@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ModelViewer from './ModelViewer';
 import TiltCard from './TiltCard';
 import './Projects.css';
 
@@ -8,7 +7,6 @@ const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [activeCategory, setActiveCategory] = useState('tech');
     const [selectedProject, setSelectedProject] = useState(null);
-    const [activeMedia, setActiveMedia] = useState('image');
 
     useEffect(() => {
         fetch('/api/projects')
@@ -21,7 +19,6 @@ const Projects = () => {
 
     const openModal = (project) => {
         setSelectedProject(project);
-        setActiveMedia('image');
         document.body.style.overflow = 'hidden';
     };
 
@@ -114,38 +111,15 @@ const Projects = () => {
                             <button className="modal-close" onClick={closeModal}>×</button>
 
                             <div className="modal-header">
-                                {selectedProject.category === 'creative' && activeMedia === 'model' ? (
-                                    <ModelViewer modelPath="/models/robot.glb" />
-                                ) : (
-                                    <img
-                                        src={selectedProject.image}
-                                        alt={selectedProject.title}
-                                        className="modal-img"
-                                    />
-                                )}
+                                <img
+                                    src={selectedProject.image}
+                                    alt={selectedProject.title}
+                                    className="modal-img"
+                                />
                             </div>
 
                             <div className="modal-body">
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <h2>{selectedProject.title}</h2>
-                                    {selectedProject.category === 'creative' && (
-                                        <div className="view-toggles">
-                                            <button
-                                                onClick={() => setActiveMedia('image')}
-                                                className={`toggle-btn ${activeMedia === 'image' ? 'active' : ''}`}
-                                                style={{ marginRight: '10px' }}
-                                            >
-                                                📷 Image
-                                            </button>
-                                            <button
-                                                onClick={() => setActiveMedia('model')}
-                                                className={`toggle-btn ${activeMedia === 'model' ? 'active' : ''}`}
-                                            >
-                                                🧊 3D View
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
+                                <h2>{selectedProject.title}</h2>
 
                                 <div className="modal-tech-stack">
                                     {selectedProject.tech.map((t, i) => (
@@ -187,7 +161,7 @@ const Projects = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </section >
+        </section>
     );
 };
 

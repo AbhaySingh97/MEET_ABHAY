@@ -82,10 +82,16 @@
     font-family: var(--font-playful);
     color: var(--secondary-color);
     min-height: 2.5rem;
+    /* Prevent flicker during decryption */
+    min-width: 300px;
 }
 
 .hero-content h1 {
     font-size: 4.5rem;
+    /* Prevent flicker during decryption */
+    min-width: 600px;
+    height: 1.2em; /* Ensure line height is stable */
+    display: inline-block;
 }
 
 .highlight {
