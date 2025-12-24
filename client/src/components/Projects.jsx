@@ -46,6 +46,13 @@ const Projects = () => {
                     <span className="tab-icon">🎨</span>
                     Creative Works
                 </button>
+                <button
+                    className={`tab-btn ${activeCategory === 'hybrid' ? 'active' : ''}`}
+                    onClick={() => setActiveCategory('hybrid')}
+                >
+                    <span className="tab-icon">🚀</span>
+                    Tech + Creative
+                </button>
             </div>
 
             {/* Projects Grid */}
@@ -141,7 +148,9 @@ const Projects = () => {
                                         rel="noopener noreferrer"
                                         className="modal-external-link"
                                     >
-                                        {selectedProject.category === 'tech' ? 'View Live Project →' : 'View on ArtStation →'}
+                                        {selectedProject.category === 'tech' || selectedProject.category === 'hybrid'
+                                            ? 'View Live Project →'
+                                            : 'View on ArtStation →'}
                                     </a>
                                 )}
                             </div>
