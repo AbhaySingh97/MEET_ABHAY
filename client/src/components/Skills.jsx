@@ -35,7 +35,7 @@ const Skills = () => {
         },
         {
             name: 'Three.js',
-            icon: <SiThreejs color="#fff" />,
+            icon: <SiThreedotjs color="#fff" />,
             category: '3D Web',
             size: 'small'
         },
