@@ -11,6 +11,7 @@
     },
     "workspaces": [
         "client",
-        "server"
+        "server",
+        "api"
     ]
 }
