@@ -14,6 +14,7 @@ import useAnalytics from './hooks/useAnalytics';
 import './App.css';
 
 import ErrorBoundary from './components/ErrorBoundary';
+import { ThemeProvider } from './config/ThemeContext';
 
 function App() {
   useAnalytics();
@@ -23,21 +24,23 @@ function App() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <ErrorBoundary>
-      <div className="app">
-        <CustomCursor />
-        <BouncingBall />
-        <Navbar />
-        <Hero />
-        <Skills />
-        <Journey />
-        <Projects />
-        <Stats />
-        <Testimonials />
-        <Contact />
-        <Footer />
-      </div>
-    </ErrorBoundary>
+    <ThemeProvider>
+      <ErrorBoundary>
+        <div className="app">
+          <CustomCursor />
+          <BouncingBall />
+          <Navbar />
+          <Hero />
+          <Skills />
+          <Journey />
+          <Projects />
+          <Stats />
+          <Testimonials />
+          <Contact />
+          <Footer />
+        </div>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
 }
 

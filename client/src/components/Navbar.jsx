@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import './Navbar.css';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -44,27 +45,31 @@ const Navbar = () => {
                     </motion.h1>
                 </div>
 
-                <div className="desktop-menu">
-                    {navLinks.map((link, index) => (
-                        <motion.a
-                            key={index}
-                            href={link.href}
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{
-                                scale: 1.1,
-                                color: getRandomColor(),
-                                textShadow: "0 0 8px rgba(255,255,255,0.5)"
-                            }}
-                        >
-                            {link.title}
-                        </motion.a>
-                    ))}
-                </div>
+                <div className="navbar-right">
+                    <div className="desktop-menu">
+                        {navLinks.map((link, index) => (
+                            <motion.a
+                                key={index}
+                                href={link.href}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                whileHover={{
+                                    scale: 1.1,
+                                    color: getRandomColor(),
+                                    textShadow: "0 0 8px rgba(255,255,255,0.5)"
+                                }}
+                            >
+                                {link.title}
+                            </motion.a>
+                        ))}
+                    </div>
 
-                <div className="mobile-icon" onClick={toggleMenu}>
-                    {isOpen ? <FaTimes /> : <FaBars />}
+                    <ThemeSwitcher />
+
+                    <div className="mobile-icon" onClick={toggleMenu}>
+                        {isOpen ? <FaTimes /> : <FaBars />}
+                    </div>
                 </div>
             </div>
 

@@ -4,11 +4,11 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(255, 248, 231, 0.95);
+    background: var(--bg-color);
     backdrop-filter: blur(5px);
-    border-bottom: 3px solid var(--text-color);
+    border-bottom: 3px solid var(--border-color);
     padding: 1rem 2rem;
-    box-shadow: 0 4px 0px rgba(61, 64, 91, 0.1);
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -17,6 +17,12 @@
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .logo {
