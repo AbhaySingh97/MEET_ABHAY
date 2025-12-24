@@ -6,7 +6,7 @@ import SkillTree from './SkillTree';
 import './Skills.css';
 
 const Skills = () => {
-    const [viewMode, setViewMode] = useState('tree'); // 'tree' or 'grid'
+    const [viewMode, setViewMode] = useState('grid'); // 'tree' or 'grid'
 
     const techSkills = [
         { name: 'React', icon: <FaReact color="#61DAFB" /> },

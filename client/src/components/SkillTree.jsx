@@ -114,7 +114,7 @@ const SkillTree = () => {
                 <div key={`label-${node.id}`} style={{
                     position: 'absolute',
                     left: node.x,
-                    top: node.y + 45,
+                    top: node.y + 60,
                     transform: 'translateX(-50%)',
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.8rem',
