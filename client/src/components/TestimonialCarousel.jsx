@@ -5,43 +5,33 @@ import './Testimonials.css';
 const testimonials = [
     {
         id: 1,
-        name: "Sarah Jenkins",
-        role: "Product Manager",
-        company: "TechFlow Inc.",
-        text: "Abhay transformed our vague requirements into a stunning, high-performance web application. His attention to detail and creative problem-solving are unmatched.",
-        avatar: "SJ"
+        name: "Aarav Sharma",
+        text: "Amazing work! He built my portfolio website in just 3 days. Very professional and easy to talk to.",
+        avatar: "AS"
     },
     {
         id: 2,
-        name: "David Chen",
-        role: "CTO",
-        company: "StartupX",
-        text: "One of the most talented full-stack developers I've worked with. He delivered the MVP two weeks ahead of schedule and the code quality was exceptional.",
-        avatar: "DC"
+        name: "Priya Patel",
+        text: "Really happy with the design. He understood exactly what I needed for my bakery shop. Looks great on mobile too!",
+        avatar: "PP"
     },
     {
         id: 3,
-        name: "Elena Rodriguez",
-        role: "Creative Director",
-        company: "Designify",
-        text: "I was blown away by how he implemented our complex 3D designs into a responsive website. The animations are buttery smooth!",
-        avatar: "ER"
+        name: "Vikram Singh",
+        text: "Great developer. Helped me fix some major bugs in my React app. Highly recommended for anyone looking for quality code.",
+        avatar: "VS"
     },
     {
         id: 4,
-        name: "Michael Chang",
-        role: "Founder",
-        company: "DevSpace",
-        text: "A true professional who cares about the end-user experience. The 'Terminal Mode' he added to our contact form increased engagement by 40%.",
-        avatar: "MC"
+        name: "Neha Gupta",
+        text: "The 3D effects are so cool! Everyone loves the new look of our agency site. It really stands out now.",
+        avatar: "NG"
     },
     {
         id: 5,
-        name: "Jessica Lee",
-        role: "Senior Dev",
-        company: "WebSolutions",
-        text: "Clean architecture, reusable components, and great documentation. It was a pleasure integrating his modules into our main system.",
-        avatar: "JL"
+        name: "Rohan Mehta",
+        text: "Simple, clean, and fast. Best experience working with a freelancer so far. Will definitely hire again.",
+        avatar: "RM"
     }
 ];
 
@@ -56,7 +46,6 @@ const TestimonialCard = ({ item }) => (
             <div className="author-avatar">{item.avatar}</div>
             <div className="author-info">
                 <h4>{item.name}</h4>
-                <span>{item.role}, {item.company}</span>
             </div>
         </div>
     </div>
