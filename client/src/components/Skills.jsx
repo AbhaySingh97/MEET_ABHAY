@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJs, FaCode, FaDatabase, FaBolt, FaCube, FaLayerGroup, FaPaintBrush } from 'react-icons/fa';
 import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreedotjs } from 'react-icons/si';
 import './Skills.css';
