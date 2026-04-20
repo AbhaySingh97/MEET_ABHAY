@@ -4,8 +4,6 @@ import './Testimonials.css';
 
 const Testimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
-    const [formData, setFormData] = useState({ name: '', role: '', text: '', avatar: '' });
-    const [submitted, setSubmitted] = useState(false);
 
     useEffect(() => {
         fetch('/api/testimonials')
@@ -23,23 +21,6 @@ const Testimonials = () => {
                 setTestimonials([]);
             });
     }, []);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await fetch('/api/testimonials', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
-            if (res.ok) {
-                setSubmitted(true);
-                setFormData({ name: '', role: '', text: '', avatar: '' });
-            }
-        } catch (err) {
-            console.error('Error submitting testimonial:', err);
-        }
-    };
 
     return (
         <section id="testimonials" className="testimonials">
@@ -64,43 +45,6 @@ const Testimonials = () => {
                         <p>"{item.text}"</p>
                     </motion.div>
                 ))}
-            </div>
-
-            <div className="testimonial-form">
-                <h3>Leave a Testimonial</h3>
-                {submitted ? (
-                    <p className="success-message">Thank you! Your testimonial has been submitted for approval.</p>
-                ) : (
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            placeholder="Your Name"
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            required
-                        />
-                        <input
-                            type="text"
-                            placeholder="Your Role (e.g., Developer, Student)"
-                            value={formData.role}
-                            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                            required
-                        />
-                        <textarea
-                            placeholder="Your testimonial..."
-                            value={formData.text}
-                            onChange={(e) => setFormData({ ...formData, text: e.target.value })}
-                            required
-                        />
-                        <input
-                            type="text"
-                            placeholder="Avatar URL (optional)"
-                            value={formData.avatar}
-                            onChange={(e) => setFormData({ ...formData, avatar: e.target.value })}
-                        />
-                        <button type="submit">Submit Testimonial</button>
-                    </form>
-                )}
             </div>
         </section>
     );

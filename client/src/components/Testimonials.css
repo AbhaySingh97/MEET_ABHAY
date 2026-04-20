@@ -5,6 +5,78 @@
     background: linear-gradient(to bottom, #0a0a0a, #111);
 }
 
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 30px rgba(var(--accent-rgb), 0.1);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.testimonial-header h4 {
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+}
+
+.testimonial-header span {
+    font-size: 0.85rem;
+    color: #667eea;
+}
+
+.testimonial-card p {
+    color: #ccc;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+@media screen and (max-width: 768px) {
+    .testimonial-card {
+        width: 100%;
+        min-width: unset;
+        padding: 1.5rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .carousel-track-container {
     width: 100%;
     overflow: hidden;
