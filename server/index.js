@@ -38,6 +38,12 @@ const journey = require('./data/journey');
 const stats = require('./data/stats');
 const socials = require('./data/socials');
 
+const testimonials = [
+    { name: "John Doe", role: "Developer", text: "Great portfolio! Very impressive work.", avatar: "" },
+    { name: "Jane Smith", role: "Designer", text: "Love the creative approach and attention to detail.", avatar: "" },
+    { name: "Mike Johnson", role: "Student", text: "Inspired me to build my own portfolio. Amazing projects!", avatar: "" }
+];
+
 // Routes
 app.get('/api/projects', (req, res) => {
     res.json(projects);
@@ -55,13 +61,17 @@ app.get('/api/socials', (req, res) => {
     res.json(socials);
 });
 
-// Testimonials: Fetch from DB (show all for now - remove approved filter)
+// Testimonials: Fetch from DB or use fallback
 app.get('/api/testimonials', async (req, res) => {
     try {
-        const testimonials = await Testimonial.find().sort({ date: -1 });
-        res.json(testimonials);
+        const data = await Testimonial.find().sort({ date: -1 });
+        if (data.length > 0) {
+            res.json(data);
+        } else {
+            res.json(testimonials);
+        }
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.json(testimonials);
     }
 });
 
