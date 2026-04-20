@@ -55,10 +55,10 @@ app.get('/api/socials', (req, res) => {
     res.json(socials);
 });
 
-// Testimonials: Fetch from DB
+// Testimonials: Fetch from DB (show all for now - remove approved filter)
 app.get('/api/testimonials', async (req, res) => {
     try {
-        const testimonials = await Testimonial.find({ approved: true }).sort({ date: -1 });
+        const testimonials = await Testimonial.find().sort({ date: -1 });
         res.json(testimonials);
     } catch (err) {
         res.status(500).json({ message: err.message });

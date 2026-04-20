@@ -92,10 +92,119 @@
     color: var(--primary-color);
 }
 
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.testimonial-header h4 {
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+}
+
+.testimonial-header span {
+    font-size: 0.85rem;
+    color: #667eea;
+}
+
+.testimonial-card p {
+    color: #ccc;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.testimonial-form {
+    max-width: 600px;
+    margin: 4rem auto 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.testimonial-form h3 {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.testimonial-form input,
+.testimonial-form textarea {
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-family: inherit;
+}
+
+.testimonial-form input:focus,
+.testimonial-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.testimonial-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.testimonial-form button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.testimonial-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+}
+
+.success-message {
+    color: #4ade80;
+    font-size: 1.1rem;
+    padding: 2rem;
+}
+
 @media screen and (max-width: 768px) {
     .testimonial-card {
-        width: 300px;
-        min-width: 300px;
+        width: 100%;
+        min-width: unset;
         padding: 1.5rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
     }
 }

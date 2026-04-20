@@ -5,7 +5,7 @@ import Skills from './components/Skills';
 import Journey from './components/Journey';
 import Projects from './components/Projects';
 import Stats from './components/Stats';
-import TestimonialCarousel from './components/TestimonialCarousel'; // Updated import
+import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
@@ -41,7 +41,7 @@ function App() {
           <Journey />
           <Projects />
           <Stats />
-          <TestimonialCarousel />
+          <Testimonials />
           <Contact />
           <Footer />
         </div>
