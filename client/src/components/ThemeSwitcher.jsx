@@ -4,9 +4,12 @@ import { useState } from 'react';
 import { FaPalette } from 'react-icons/fa';
 import './ThemeSwitcher.css';
 
+import useSound from '../hooks/useSound';
+
 const ThemeSwitcher = () => {
     const { currentTheme, setCurrentTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
+    const { playSound } = useSound();
 
     return (
         <div className="theme-switcher-container">
@@ -14,7 +17,10 @@ const ThemeSwitcher = () => {
                 className="theme-toggle-btn"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => {
+                    setIsOpen(!isOpen);
+                    playSound('click');
+                }}
             >
                 <FaPalette />
             </motion.button>
@@ -34,6 +40,7 @@ const ThemeSwitcher = () => {
                                 onClick={() => {
                                     setCurrentTheme(key);
                                     setIsOpen(false);
+                                    playSound('success');
                                 }}
                             >
                                 <div

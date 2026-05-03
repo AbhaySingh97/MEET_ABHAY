@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaReact, FaNodeJs, FaCode, FaPaintBrush, FaJs, FaCube } from 'react-icons/fa';
-import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreedotjs } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaCode, FaPaintBrush, FaJs, FaCube, FaPython, FaGitAlt, FaDocker } from 'react-icons/fa';
+import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreedotjs, SiVite, SiNextdotjs, SiFastapi, SiPostgresql, SiTailwindcss, SiAdobe, SiRedux } from 'react-icons/si';
 import SkillTree from './SkillTree';
 import './Skills.css';
 
@@ -10,19 +10,26 @@ const Skills = () => {
 
     const techSkills = [
         { name: 'React', icon: <FaReact color="#61DAFB" /> },
+        { name: 'Next.js', icon: <SiNextdotjs color="#000000" /> },
         { name: 'Node.js', icon: <FaNodeJs color="#68A063" /> },
         { name: 'Express', icon: <SiExpress color="#808080" /> },
-        { name: 'Socket.io', icon: <SiSocketdotio color="#010101" /> },
+        { name: 'FastAPI', icon: <SiFastapi color="#009688" /> },
+        { name: 'Python', icon: <FaPython color="#3776AB" /> },
+        { name: 'PostgreSQL', icon: <SiPostgresql color="#336791" /> },
         { name: 'MongoDB', icon: <SiMongodb color="#47A248" /> },
+        { name: 'Redux', icon: <SiRedux color="#764ABC" /> },
         { name: 'Three.js', icon: <SiThreedotjs color="#000000" /> },
+        { name: 'Socket.io', icon: <SiSocketdotio color="#010101" /> },
         { name: 'JavaScript', icon: <FaJs color="#F7DF1E" /> },
-        { name: 'Full Stack', icon: <FaCode color="#FF4500" /> },
+        { name: 'Tailwind', icon: <SiTailwindcss color="#06B6D4" /> },
+        { name: 'Git', icon: <FaGitAlt color="#F05032" /> },
     ];
 
     const creativeSkills = [
         { name: '3D Artist', icon: <FaCube color="#FFD700" /> },
         { name: 'Blender', icon: <SiBlender color="#E87D0D" /> },
         { name: 'Unreal Engine', icon: <SiUnrealengine color="#333" /> },
+        { name: 'Substance', icon: <SiAdobe color="#FF0000" /> },
         { name: 'UI/UX', icon: <SiFigma color="#F24E1E" /> },
         { name: 'Design', icon: <SiCanva color="#00C4CC" /> },
     ];

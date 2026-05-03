@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import TiltCard from './TiltCard';
 import './Projects.css';
 
+import useSound from '../hooks/useSound';
+
 const Projects = () => {
     // Fix Vercel build syntax error
     const [projects, setProjects] = useState([]);
     const [activeCategory, setActiveCategory] = useState('tech');
     const [selectedProject, setSelectedProject] = useState(null);
+    const { playSound } = useSound();
 
     useEffect(() => {
         fetch('/api/projects')
@@ -22,11 +25,13 @@ const Projects = () => {
     const openModal = (project) => {
         setSelectedProject(project);
         document.body.style.overflow = 'hidden';
+        playSound('modal');
     };
 
     const closeModal = () => {
         setSelectedProject(null);
         document.body.style.overflow = 'auto';
+        playSound('click');
     };
 
     return (
@@ -37,21 +42,30 @@ const Projects = () => {
             <div className="category-tabs">
                 <button
                     className={`tab-btn ${activeCategory === 'tech' ? 'active' : ''}`}
-                    onClick={() => setActiveCategory('tech')}
+                    onClick={() => {
+                        setActiveCategory('tech');
+                        playSound('click');
+                    }}
                 >
                     <span className="tab-icon">💻</span>
                     Tech Projects
                 </button>
                 <button
                     className={`tab-btn ${activeCategory === 'creative' ? 'active' : ''}`}
-                    onClick={() => setActiveCategory('creative')}
+                    onClick={() => {
+                        setActiveCategory('creative');
+                        playSound('click');
+                    }}
                 >
                     <span className="tab-icon">🎨</span>
                     Creative Works
                 </button>
                 <button
                     className={`tab-btn ${activeCategory === 'hybrid' ? 'active' : ''}`}
-                    onClick={() => setActiveCategory('hybrid')}
+                    onClick={() => {
+                        setActiveCategory('hybrid');
+                        playSound('click');
+                    }}
                 >
                     <span className="tab-icon">🚀</span>
                     Tech + Creative
@@ -69,6 +83,7 @@ const Projects = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}
                             transition={{ delay: index * 0.1 }}
+                            onMouseEnter={() => playSound('hover', 0.1)}
                         >
                             <TiltCard className="project-tilt-container">
                                 <div className="project-link-wrapper">
@@ -88,8 +103,21 @@ const Projects = () => {
                                         </div>
                                     </div>
                                     <div className="project-actions" style={{ padding: '0 1.5rem 1.5rem', display: 'flex', gap: '1rem' }}>
-                                        <button onClick={() => openModal(project)} className="view-details-btn" style={{ flex: 1 }}>Quick View</button>
-                                        <Link to={`/project/${project.id || project._id}`} className="view-details-btn secondary" style={{ flex: 1, textAlign: 'center', textDecoration: 'none' }}>Full Case Study →</Link>
+                                        <button 
+                                            onClick={() => openModal(project)} 
+                                            className="view-details-btn" 
+                                            style={{ flex: 1 }}
+                                        >
+                                            Quick View
+                                        </button>
+                                        <Link 
+                                            to={`/project/${project.id || project._id}`} 
+                                            className="view-details-btn secondary" 
+                                            style={{ flex: 1, textAlign: 'center', textDecoration: 'none' }}
+                                            onClick={() => playSound('click')}
+                                        >
+                                            Full Case Study →
+                                        </Link>
                                     </div>
                                 </div>
                             </TiltCard>

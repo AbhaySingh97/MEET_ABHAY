@@ -6,7 +6,11 @@ import './Navbar.css';
 import ThemeSwitcher from './ThemeSwitcher';
 import MagneticButton from './MagneticButton';
 
+import useSound from '../hooks/useSound';
+
 const Navbar = () => {
+    const { playSound } = useSound();
+    
     const navLinks = [
         { title: 'Home', href: '#home', icon: <FaHome /> },
         { title: 'Skills', href: '#skills', icon: <FaCode /> },
@@ -38,6 +42,7 @@ const Navbar = () => {
                             animate={{ opacity: 1, x: 0 }}
                             className="logo"
                             whileHover={{ color: getRandomColor() }}
+                            onClick={() => playSound('click')}
                         >
                             meet_abhay
                         </motion.h1>
@@ -52,6 +57,8 @@ const Navbar = () => {
                                         initial={{ opacity: 0, y: -10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: index * 0.1 }}
+                                        onMouseEnter={() => playSound('hover', 0.2)}
+                                        onClick={() => playSound('click')}
                                         whileHover={{
                                             color: getRandomColor(),
                                             textShadow: "0 0 8px rgba(255,255,255,0.5)"
@@ -71,7 +78,12 @@ const Navbar = () => {
             {/* Bottom Navigation for Mobile */}
             <div className="bottom-nav">
                 {navLinks.map((link, index) => (
-                    <a key={index} href={link.href} className="bottom-nav-item">
+                    <a 
+                        key={index} 
+                        href={link.href} 
+                        className="bottom-nav-item"
+                        onClick={() => playSound('click')}
+                    >
                         <span className="bottom-nav-icon">{link.icon}</span>
                         <span className="bottom-nav-label">{link.title}</span>
                     </a>
