@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaReact, FaNodeJs, FaCode, FaPaintBrush, FaJs, FaCube, FaPython, FaGitAlt, FaDocker } from 'react-icons/fa';
-import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreedotjs, SiVite, SiNextdotjs, SiFastapi, SiPostgresql, SiTailwindcss, SiAdobe, SiRedux } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaCode, FaPaintBrush, FaJs, FaCube, FaPython, FaGitAlt, FaDocker, FaBrush } from 'react-icons/fa';
+import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreedotjs, SiVite, SiNextdotjs, SiFastapi, SiPostgresql, SiTailwindcss, SiUnity, SiAdobephotoshop, SiRedux } from 'react-icons/si';
 import SkillTree from './SkillTree';
 import './Skills.css';
 
@@ -29,7 +29,9 @@ const Skills = () => {
         { name: '3D Artist', icon: <FaCube color="#FFD700" /> },
         { name: 'Blender', icon: <SiBlender color="#E87D0D" /> },
         { name: 'Unreal Engine', icon: <SiUnrealengine color="#333" /> },
-        { name: 'Substance', icon: <SiAdobe color="#FF0000" /> },
+        { name: 'Unity', icon: <SiUnity color="#222" /> },
+        { name: 'Substance', icon: <FaBrush color="#FF0000" /> },
+        { name: 'Photoshop', icon: <SiAdobephotoshop color="#31A8FF" /> },
         { name: 'UI/UX', icon: <SiFigma color="#F24E1E" /> },
         { name: 'Design', icon: <SiCanva color="#00C4CC" /> },
     ];
