@@ -38,7 +38,7 @@ const projects = [
         description: "🥇 First Place Winner – IoT-based solution for automated waste segregation and monitoring at STEP UP exhibition.",
         fullDescription: "Presented our Smart Garbage Monitoring & Segregation System at the STEP UP two-day exhibition, showcasing an IoT-based solution for automated, hygienic, and sustainable waste management.\n\nOur project demonstrates an IoT-enabled solution that automatically segregates dry, wet, and metallic waste using advanced sensors and microcontrollers, promoting hygienic waste handling and supporting sustainable living.\n\nThis initiative highlights how technology-driven automation can transform modern waste management for greener and smarter communities. We were honored to win First Place in the Sensor Exhibition Final Round, validating our innovative approach to solving real-world environmental challenges.",
         tech: ["IoT", "Arduino", "Sensors", "Microcontrollers", "Automation"],
-        image: "/smart-garbage.jpg",
+        image: "/photo_2025-12-02_18-01-59.jpg",
         link: "#",
         achievements: [
             "🥇 First Place Winner – Sensor Exhibition Final Round",
