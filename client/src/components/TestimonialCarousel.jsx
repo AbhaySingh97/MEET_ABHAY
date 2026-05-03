@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FaQuoteLeft } from 'react-icons/fa';
 import './Testimonials.css';
 
@@ -57,29 +56,11 @@ const TestimonialCarousel = () => {
             <h2 className="section-title">What People Say</h2>
 
             <div className="carousel-track-container">
-                <motion.div
-                    className="carousel-track"
-                    animate={{ x: [0, -1000] }} // Adjust based on width
-                    transition={{
-                        x: {
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            duration: 20,
-                            ease: "linear",
-                        },
-                    }}
-                    whileHover={{ animationPlayState: "paused" }} // CSS handling for pause often smoother
-                >
+                <div className="carousel-track marquee">
                     {carouselData.map((item, index) => (
                         <TestimonialCard key={`${item.id}-${index}`} item={item} />
                     ))}
-                </motion.div>
-
-                {/* Duplicate track for seamless effect if needed, typically single track with doubled data works if width is calculated well. 
-                     For strictly seamless CSS/Framer, we often need closer control. 
-                     Let's use a simpler CSS animation approach wrapped in motion for hover control or just framer.
-                     The `animate.x` value needs to match half the total width of content.
-                 */}
+                </div>
             </div>
         </section>
     );

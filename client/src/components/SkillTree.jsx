@@ -44,88 +44,102 @@ const SkillTree = () => {
         };
     });
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
     return (
         <div className="skill-tree-container"
             style={{
                 position: 'relative',
-                height: '600px',
+                height: isMobile ? '700px' : '600px',
                 width: '100%',
-                overflow: 'hidden',
-                background: 'rgba(255, 255, 255, 0.4)', // Light semi-transparent bg
+                overflowX: 'auto',
+                overflowY: 'hidden',
+                background: 'rgba(255, 255, 255, 0.4)',
                 borderRadius: '20px',
-                border: '2px dashed var(--accent-color)', // Dashed border fits retro theme
-                boxShadow: 'inset 0 0 20px rgba(0,0,0,0.05)'
+                border: '2px dashed var(--accent-color)',
+                boxShadow: 'inset 0 0 20px rgba(0,0,0,0.05)',
+                cursor: 'grab',
+                WebkitOverflowScrolling: 'touch'
             }}>
+            
+            <div style={{
+                position: 'relative',
+                width: isMobile ? '1200px' : '100%',
+                height: '100%',
+                padding: '2rem'
+            }}>
+                {/* SVG Connections */}
+                <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+                    {connections.map((line, i) => (
+                        <motion.line
+                            key={i}
+                            x1={line.from.x}
+                            y1={line.from.y}
+                            x2={line.to.x}
+                            y2={line.to.y}
+                            stroke="var(--secondary-color)"
+                            strokeWidth="3"
+                            strokeOpacity="0.4"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 1.5, delay: 0.5 }}
+                        />
+                    ))}
+                </svg>
 
-            {/* SVG Connections - Darker lines for visibility on light bg */}
-            <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
-                {connections.map((line, i) => (
-                    <motion.line
-                        key={i}
-                        x1={line.from.x}
-                        y1={line.from.y}
-                        x2={line.to.x}
-                        y2={line.to.y}
-                        stroke="var(--secondary-color)"
-                        strokeWidth="3"
-                        strokeOpacity="0.4"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.5, delay: 0.5 }}
-                    />
+                {/* Nodes */}
+                {nodes.map((node) => (
+                    <motion.div
+                        key={node.id}
+                        className="tree-node"
+                        style={{
+                            position: 'absolute',
+                            left: node.x,
+                            top: node.y,
+                            transform: 'translate(-50%, -50%)',
+                            width: node.type === 'core' ? 80 : 60,
+                            height: node.type === 'core' ? 80 : 60,
+                            borderRadius: '50%',
+                            background: 'var(--bg-color)',
+                            border: `3px solid ${node.color}`,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: 'pointer',
+                            zIndex: 10,
+                            boxShadow: `4px 4px 0px var(--text-color)`
+                        }}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        whileHover={{ scale: 1.15, transform: 'translate(-50%, -55%)', boxShadow: `6px 6px 0px ${node.color}` }}
+                        onClick={() => setSelectedNode(node)}
+                    >
+                        <div style={{ fontSize: node.type === 'core' ? '2rem' : '1.5rem', color: 'var(--text-color)' }}>
+                            {node.icon || node.label[0]}
+                        </div>
+                    </motion.div>
                 ))}
-            </svg>
 
-            {/* Nodes */}
-            {nodes.map((node) => (
-                <motion.div
-                    key={node.id}
-                    className="tree-node"
-                    style={{
+                {/* Labels */}
+                {nodes.map((node) => (
+                    <div key={`label-${node.id}`} style={{
                         position: 'absolute',
                         left: node.x,
-                        top: node.y,
-                        transform: 'translate(-50%, -50%)',
-                        width: node.type === 'core' ? 80 : 60,
-                        height: node.type === 'core' ? 80 : 60,
-                        borderRadius: '50%',
-                        background: 'var(--bg-color)', // Match site background
-                        border: `3px solid ${node.color}`,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        cursor: 'pointer',
-                        zIndex: 10,
-                        boxShadow: `4px 4px 0px var(--text-color)` // Retro shadow
-                    }}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    whileHover={{ scale: 1.15, transform: 'translate(-50%, -55%)', boxShadow: `6px 6px 0px ${node.color}` }}
-                    onClick={() => setSelectedNode(node)}
-                >
-                    <div style={{ fontSize: node.type === 'core' ? '2rem' : '1.5rem', color: 'var(--text-color)' }}>
-                        {node.icon || node.label[0]}
+                        top: node.y + 55,
+                        transform: 'translateX(-50%)',
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.8rem',
+                        fontWeight: 'bold',
+                        color: 'var(--secondary-color)',
+                        pointerEvents: 'none',
+                        opacity: 0.8,
+                        textAlign: 'center',
+                        width: '100px'
+                    }}>
+                        {node.label}
                     </div>
-                </motion.div>
-            ))}
-
-            {/* Floating label for hover could be added here if needed, or stick to simpler UI */}
-            {nodes.map((node) => (
-                <div key={`label-${node.id}`} style={{
-                    position: 'absolute',
-                    left: node.x,
-                    top: node.y + 60,
-                    transform: 'translateX(-50%)',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.8rem',
-                    fontWeight: 'bold',
-                    color: 'var(--secondary-color)',
-                    pointerEvents: 'none',
-                    opacity: 0.8
-                }}>
-                    {node.label}
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 };

@@ -125,11 +125,38 @@
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+
     .desktop-menu {
         display: none;
     }
 
     .mobile-icon {
         display: block;
+        margin-left: 0.5rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .navbar-right {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .logo-img {
+        height: 30px !important;
     }
 }

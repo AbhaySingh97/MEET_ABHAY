@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import TiltCard from './TiltCard';
 import './Projects.css';
 
@@ -62,7 +63,7 @@ const Projects = () => {
                 <AnimatePresence mode="wait">
                     {filteredProjects.map((project, index) => (
                         <motion.div
-                            key={project.id}
+                            key={project.id || project._id}
                             className="project-card-wrapper"
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -70,20 +71,25 @@ const Projects = () => {
                             transition={{ delay: index * 0.1 }}
                         >
                             <TiltCard className="project-tilt-container">
-                                <div
-                                    onClick={() => openModal(project)}
-                                    className="project-link"
-                                >
-                                    <img src={project.image} alt={project.title} className="project-img" />
-                                    <div className="project-info">
-                                        <h3>{project.title}</h3>
-                                        <p>{project.description}</p>
-                                        <div className="tech-stack">
-                                            {project.tech.map((t, i) => (
-                                                <span key={i} className="tech-tag">{t}</span>
-                                            ))}
+                                <div className="project-link-wrapper">
+                                    <div
+                                        onClick={() => openModal(project)}
+                                        className="project-link"
+                                    >
+                                        <img src={project.image} alt={project.title} className="project-img" />
+                                        <div className="project-info">
+                                            <h3>{project.title}</h3>
+                                            <p>{project.description}</p>
+                                            <div className="tech-stack">
+                                                {project.tech.map((t, i) => (
+                                                    <span key={i} className="tech-tag">{t}</span>
+                                                ))}
+                                            </div>
                                         </div>
-                                        <button className="view-details-btn">View Details →</button>
+                                    </div>
+                                    <div className="project-actions" style={{ padding: '0 1.5rem 1.5rem', display: 'flex', gap: '1rem' }}>
+                                        <button onClick={() => openModal(project)} className="view-details-btn" style={{ flex: 1 }}>Quick View</button>
+                                        <Link to={`/project/${project.id || project._id}`} className="view-details-btn secondary" style={{ flex: 1, textAlign: 'center', textDecoration: 'none' }}>Full Case Study →</Link>
                                     </div>
                                 </div>
                             </TiltCard>

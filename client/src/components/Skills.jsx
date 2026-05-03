@@ -29,25 +29,26 @@ const Skills = () => {
 
     return (
         <section id="skills" className="skills">
-            <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                <h2 className="section-title" style={{ margin: 0 }}>Skills & Expertise</h2>
+            <div className="section-header">
+                <h2 className="section-title">Skills & Expertise</h2>
                 <div className="view-toggle">
                     <button
                         onClick={() => setViewMode('tree')}
                         className={`toggle-btn ${viewMode === 'tree' ? 'active' : ''}`}
-                        style={{ padding: '0.5rem 1rem', background: viewMode === 'tree' ? 'var(--accent-color)' : 'transparent', border: '1px solid var(--accent-color)', borderRadius: '5px 0 0 5px', cursor: 'pointer', color: '#fff' }}
                     >
                         Interactive
                     </button>
                     <button
                         onClick={() => setViewMode('grid')}
                         className={`toggle-btn ${viewMode === 'grid' ? 'active' : ''}`}
-                        style={{ padding: '0.5rem 1rem', background: viewMode === 'grid' ? 'var(--accent-color)' : 'transparent', border: '1px solid var(--accent-color)', borderRadius: '0 5px 5px 0', cursor: 'pointer', color: '#fff' }}
                     >
                         Classic
                     </button>
                 </div>
             </div>
+            <p className="skills-intro">
+                My technical stack is a deliberate blend of modern web technologies and high-end creative tools. By mastering both the logical structure of full-stack development and the visual intricacies of 3D modeling, I am able to architect digital solutions that are as powerful as they are beautiful. From real-time state management to optimized 3D rendering, each skill in my toolkit is honed to deliver premium user experiences.
+            </p>
 
             {viewMode === 'tree' ? (
                 <SkillTree />

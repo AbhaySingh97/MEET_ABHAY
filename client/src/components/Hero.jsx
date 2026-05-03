@@ -36,15 +36,28 @@ const Hero = () => {
                         {role.displayedText}
                         {!role.isComplete && name.isComplete && <span className="cursor main-cursor">|</span>}
                     </motion.h1>
-                    <p>Building digital experiences with modern technologies.</p>
-                    <motion.a
-                        href="#projects"
-                        className="cta-btn"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        View Work
-                    </motion.a>
+                    <p>
+                        Specializing in the development of immersive digital experiences that seamlessly blend high-fidelity 3D artistry with robust full-stack engineering. 
+                        I transform complex technical requirements into elegant, high-performance web applications that captivate and engage users.
+                    </p>
+                    <div className="hero-cta-group">
+                        <motion.a
+                            href="#projects"
+                            className="cta-btn"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            Explore My Work
+                        </motion.a>
+                        <motion.a
+                            href="#contact"
+                            className="cta-btn secondary"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            Let's Collaborate
+                        </motion.a>
+                    </div>
                 </motion.div>
 
                 <motion.div

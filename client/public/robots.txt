@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /#projects
+Allow: /#skills
+Allow: /#journey
+Allow: /#philosophy
+Disallow: /admin
+Disallow: /login
+Disallow: /dashboard
+
+Sitemap: https://abhaysinghc.com/sitemap.xml
