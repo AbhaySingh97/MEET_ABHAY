@@ -1,76 +1,76 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Skills from './components/Skills';
-import Journey from './components/Journey';
 import Projects from './components/Projects';
-import Stats from './components/Stats';
-import Philosophy from './components/Philosophy';
-import TestimonialCarousel from './components/TestimonialCarousel';
+import RawToReal from './components/RawToReal';
+import About from './components/About';
+import Awards from './components/Awards';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
-import BouncingBall from './components/BouncingBall';
 import ErrorBoundary from './components/ErrorBoundary';
 import SEO from './components/SEO';
 import ProjectDetails from './components/ProjectDetails';
-import { ThemeProvider } from './config/ThemeContext';
 import './App.css';
 
 const Home = () => (
   <>
     <SEO 
-      title="Home" 
-      description="Explore the portfolio of Abhay Singh Chauhan, a 3D Artist and Full Stack Developer. Discover immersive 3D experiences, robust web applications, and a unique blend of art and technology."
+      title="ABHAY® — 3D Artist & Full Stack Developer | Portfolio" 
+      description="Portfolio of Abhay Singh Chauhan, 3D Artist & Full Stack Developer. Merging high-fidelity 3D artistry with robust web engineering."
       keywords="3D Artist, Full Stack Developer, React Developer, Blender Artist, Unreal Engine, Web Development, Portfolio, Abhay Singh Chauhan"
     />
     <Hero />
-    <Skills />
-    <Journey />
     <Projects />
-    <Stats />
-    <div className="seo-hidden">
-      <Philosophy />
-    </div>
-    <TestimonialCarousel />
+    <RawToReal />
+    <About />
+    <Awards />
     <Contact />
   </>
 );
 
 function App() {
-  // Scroll to top on page load/refresh
+  const location = useLocation();
+
+  // Handle path / hash navigation smooth scroll
   useEffect(() => {
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
+    const targetId = location.hash 
+      ? location.hash.replace('#', '') 
+      : (location.pathname !== '/' ? location.pathname.replace('/', '') : '');
+
+    if (targetId) {
+      const timer = setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
     }
-    window.scrollTo(0, 0);
-    return () => {
-      if ('scrollRestoration' in window.history) {
-        window.history.scrollRestoration = 'auto';
-      }
-    };
-  }, []);
+  }, [location.pathname, location.hash]);
 
   return (
-    <ThemeProvider>
-      <ErrorBoundary>
-        <div className="app">
-          <CustomCursor />
-          <BouncingBall />
-          <Navbar />
+    <ErrorBoundary>
+      <div className="app bg-[#0a0a0c] text-white selection:bg-[#dc2626] selection:text-white min-h-screen relative">
+        <CustomCursor />
+        <Navbar />
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/project/:id" element={<ProjectDetails />} />
-            {/* Fallback for SEO indexing of hash routes */}
+            {/* Fallback routes for SEO and direct links */}
+            <Route path="/work" element={<Home />} />
             <Route path="/projects" element={<Home />} />
-            <Route path="/skills" element={<Home />} />
-            <Route path="/philosophy" element={<Home />} />
+            <Route path="/breakdown" element={<Home />} />
+            <Route path="/about" element={<Home />} />
+            <Route path="/awards" element={<Home />} />
+            <Route path="/contact" element={<Home />} />
           </Routes>
-          <Footer />
-        </div>
-      </ErrorBoundary>
-    </ThemeProvider>
+        </main>
+        <Footer />
+      </div>
+    </ErrorBoundary>
   );
 }
 

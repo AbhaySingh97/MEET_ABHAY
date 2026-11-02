@@ -7,7 +7,14 @@ const CustomCursor = () => {
     const animationFrameId = useRef();
 
     useEffect(() => {
+        const isMotionAllowed = () => {
+            return document.documentElement.dataset.motion !== 'off' &&
+                   !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        };
+
         const addParticle = (x, y, burst = false) => {
+            if (!isMotionAllowed()) return;
+
             const count = burst ? 12 : 1;
             const newParticles = [];
 
@@ -23,8 +30,8 @@ const CustomCursor = () => {
                     vx: Math.cos(angle) * velocity,
                     vy: Math.sin(angle) * velocity,
                     life,
-                    color: `hsl(${Math.random() * 360}, 100%, 70%)`,
-                    size: Math.random() * 4 + 2
+                    color: Math.random() > 0.4 ? 'rgba(220, 38, 38, 0.85)' : 'rgba(239, 68, 68, 0.85)',
+                    size: Math.random() * 3 + 1.5
                 });
             }
 
@@ -66,12 +73,21 @@ const CustomCursor = () => {
             addParticle(e.clientX, e.clientY, true);
         };
 
+        const handleMotionToggle = (e) => {
+            if (e.detail && !e.detail.active) {
+                particlesRef.current = [];
+                setParticles([]);
+            }
+        };
+
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('click', handleClick);
+        window.addEventListener('toggle-motion', handleMotionToggle);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('click', handleClick);
+            window.removeEventListener('toggle-motion', handleMotionToggle);
             if (animationFrameId.current) {
                 cancelAnimationFrame(animationFrameId.current);
             }

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { FaReact, FaNodeJs, FaCode, FaPaintBrush, FaJs, FaCube, FaPython, FaGitAlt, FaDocker, FaBrush, FaImage } from 'react-icons/fa';
-import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreedotjs, SiVite, SiNextdotjs, SiFastapi, SiPostgresql, SiTailwindcss, SiUnity, SiRedux } from 'react-icons/si';
+import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiFigma, SiSocketdotio, SiThreedotjs, SiVite, SiNextdotjs, SiFastapi, SiPostgresql, SiTailwindcss, SiUnity, SiRedux } from 'react-icons/si';
 import SkillTree from './SkillTree';
 import './Skills.css';
 
@@ -33,7 +33,7 @@ const Skills = () => {
         { name: 'Substance', icon: <FaBrush color="#FF0000" /> },
         { name: 'Photoshop', icon: <FaImage color="#31A8FF" /> },
         { name: 'UI/UX', icon: <SiFigma color="#F24E1E" /> },
-        { name: 'Design', icon: <SiCanva color="#00C4CC" /> },
+        { name: 'Design', icon: <FaPaintBrush color="#00C4CC" /> },
     ];
 
     return (

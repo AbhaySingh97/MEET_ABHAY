@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { FaReact, FaNodeJs, FaCode, FaPaintBrush } from 'react-icons/fa';
-import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiCanva, SiFigma, SiSocketdotio, SiThreedotjs, SiJavascript } from 'react-icons/si';
+import { SiBlender, SiUnrealengine, SiExpress, SiMongodb, SiFigma, SiSocketdotio, SiThreedotjs, SiJavascript } from 'react-icons/si';
 
 const SkillTree = () => {
     const [selectedNode, setSelectedNode] = useState(null);
