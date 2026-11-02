@@ -35,7 +35,7 @@ const ProjectDetails = () => {
   if (loading) {
     return (
       <div className="min-h-screen pt-32 flex items-center justify-center text-neutral-400 font-mono">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#dc2626] animate-ping"></span>
           <span>Loading project details...</span>
         </div>
@@ -45,12 +45,12 @@ const ProjectDetails = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen pt-32 flex flex-col items-center justify-center space-y-4 text-center px-6">
-        <h2 className="font-['Bebas_Neue'] text-4xl text-white">Project Not Found</h2>
+      <div className="min-h-screen pt-32 flex flex-col items-center justify-center gap-4 text-center px-6">
+        <h2 className="font-display text-4xl text-white">Project Not Found</h2>
         <p className="text-sm text-neutral-400 font-mono">The requested project could not be located.</p>
         <Link
           to="/"
-          className="inline-flex items-center space-x-2 bg-[#dc2626] text-white px-5 py-2.5 rounded-md text-xs font-mono uppercase tracking-wider"
+          className="inline-flex items-center gap-2 bg-[#dc2626] text-white px-5 py-2.5 rounded-md text-xs font-mono uppercase tracking-wider"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Portfolio</span>
@@ -76,7 +76,7 @@ const ProjectDetails = () => {
       >
         <Link
           to="/"
-          className="inline-flex items-center space-x-2 text-xs font-mono tracking-widest uppercase text-neutral-400 hover:text-[#dc2626] transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-neutral-400 hover:text-[#dc2626] transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4 text-[#dc2626]" />
           <span>BACK TO PORTFOLIO</span>
@@ -84,14 +84,14 @@ const ProjectDetails = () => {
 
         {/* Project Header */}
         <div className="space-y-4 mb-8">
-          <div className="flex items-center space-x-3 text-xs font-mono uppercase text-[#dc2626]">
+          <div className="flex items-center gap-3 text-xs font-mono uppercase text-[#dc2626]">
             <span className="w-6 h-[2px] bg-[#dc2626]"></span>
             <span>{project.categoryLabel || project.category?.toUpperCase()}</span>
             <span>•</span>
             <span className="text-neutral-400">{project.year || '2025'}</span>
           </div>
 
-          <h1 className="font-['Bebas_Neue'] text-5xl md:text-7xl font-bold text-white tracking-wide leading-none">
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-white tracking-wide leading-none">
             {project.title}
           </h1>
 
@@ -124,7 +124,7 @@ const ProjectDetails = () => {
           
           {/* Main Story & Overview */}
           <div className="lg:col-span-8 space-y-6">
-            <h2 className="font-['Bebas_Neue'] text-3xl text-white tracking-wide border-b border-white/10 pb-2">
+            <h2 className="font-display text-3xl text-white tracking-wide border-b border-white/10 pb-2">
               OVERVIEW &amp; STORY
             </h2>
             <div className="text-sm text-neutral-300 leading-relaxed space-y-4 whitespace-pre-line font-sans">
@@ -135,12 +135,12 @@ const ProjectDetails = () => {
 
             {project.achievements && project.achievements.length > 0 && (
               <div className="pt-6">
-                <h3 className="font-['Bebas_Neue'] text-2xl text-[#dc2626] tracking-wide mb-3">
+                <h3 className="font-display text-2xl text-[#dc2626] tracking-wide mb-3">
                   KEY HIGHLIGHTS &amp; ACHIEVEMENTS
                 </h3>
                 <ul className="space-y-2 text-xs font-mono text-neutral-300">
                   {project.achievements.map((item, i) => (
-                    <li key={i} className="flex items-start space-x-2">
+                    <li key={i} className="flex items-start gap-2">
                       <span className="text-[#dc2626] font-bold">•</span>
                       <span>{item}</span>
                     </li>
@@ -179,7 +179,7 @@ const ProjectDetails = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center space-x-2 bg-[#dc2626] hover:bg-red-700 text-white py-3 rounded-lg text-xs font-bold tracking-widest uppercase transition-colors shadow-lg"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-[#dc2626] hover:bg-red-700 text-white py-3 rounded-lg text-xs font-bold tracking-widest uppercase transition-colors shadow-lg"
                   >
                     <span>
                       {project.category === '3d' ? 'VIEW ON ARTSTATION' : 'LAUNCH LIVE DEMO'}

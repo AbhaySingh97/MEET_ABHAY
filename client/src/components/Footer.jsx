@@ -35,7 +35,7 @@ const Footer = () => {
         <a 
           href={isHome ? "#hero" : "/"} 
           onClick={handleBrandClick}
-          className="font-['Bebas_Neue'] text-3xl tracking-wider text-white hover:text-[#dc2626] transition-colors"
+          className="font-display text-3xl tracking-wider text-white hover:text-[#dc2626] transition-colors"
         >
           ABHAY<span className="text-[#dc2626] text-xs">®</span>
         </a>
@@ -46,7 +46,7 @@ const Footer = () => {
         </p>
 
         {/* Social Links & Back to top */}
-        <div className="flex items-center space-x-6 text-neutral-400">
+        <div className="flex items-center gap-6 text-neutral-400">
           <a
             href="https://www.artstation.com/abhay_singh_chauhan"
             target="_blank"
@@ -66,6 +66,15 @@ const Footer = () => {
             <FaLinkedin className="w-4 h-4" />
           </a>
           <a
+            href="https://github.com/AbhaySingh97"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#dc2626] transition-colors p-1"
+            title="GitHub"
+          >
+            <FaGithub className="w-4 h-4" />
+          </a>
+          <a
             href="https://www.codechef.com/users/gun_abhay_23"
             target="_blank"
             rel="noopener noreferrer"
@@ -74,22 +83,13 @@ const Footer = () => {
           >
             <SiCodechef className="w-4 h-4" />
           </a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#dc2626] transition-colors p-1"
-            title="GitHub"
-          >
-            <FaGithub className="w-4 h-4" />
-          </a>
-          
+
           <button
             onClick={scrollToTop}
-            className="hover:text-[#dc2626] transition-colors flex items-center space-x-1 cursor-pointer font-mono text-[11px] uppercase tracking-wider pl-2 border-l border-white/10"
+            className="hover:text-[#dc2626] transition-colors flex items-center gap-1 cursor-pointer font-mono text-[11px] uppercase tracking-wider ml-2"
           >
             <span>TOP</span>
-            <ArrowUp className="w-3.5 h-3.5 text-[#dc2626]" />
+            <ArrowUp className="w-3.5 h-3.5" />
           </button>
         </div>
 

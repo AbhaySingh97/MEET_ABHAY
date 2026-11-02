@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -25,23 +26,43 @@
   --border-color: #222228;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Bulletproof Global Typography & Reset */
+html {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  scroll-behavior: smooth;
+  background-color: #0a0a0c;
 }
 
 body {
   background-color: #0a0a0c;
   color: #f3f4f6;
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
   background-size: 24px 24px;
 }
 
+/* Guaranteed Font Classes */
+.font-display {
+  font-family: 'Bebas Neue', -apple-system, sans-serif !important;
+  letter-spacing: 0.04em;
+}
+
+.font-script {
+  font-family: 'Caveat', cursive !important;
+}
+
+.font-syne {
+  font-family: 'Syne', sans-serif !important;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+}
+
 /* Giant Background Typography Layering */
 .hero-big-text {
+  font-family: 'Bebas Neue', -apple-system, sans-serif !important;
   font-size: clamp(5.5rem, 20vw, 22rem);
   line-height: 0.85;
   letter-spacing: -0.04em;
@@ -78,7 +99,7 @@ body {
   user-select: none;
 }
 
-/* SEO Utilities: Content visible to crawlers but hidden from users */
+/* SEO Utilities */
 .seo-hidden {
   position: absolute !important;
   width: 1px !important;

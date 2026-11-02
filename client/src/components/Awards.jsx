@@ -13,23 +13,23 @@ const Awards = () => {
           
           {/* Left Column: Big Award Counter & Laurel */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-neutral-400 font-mono">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 font-mono">
               <span className="w-6 h-[2px] bg-[#dc2626]"></span>
               <span>RECOGNITION &amp; AWARDS</span>
             </div>
             
-            <h2 className="font-['Bebas_Neue'] text-5xl md:text-7xl font-bold tracking-tight text-white leading-none">
+            <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-white leading-none">
               THE WORK.<br />
               <span className="text-[#dc2626]">THE RECOGNITION.</span>
             </h2>
 
             {/* Giant 10+ Laurel Wreath */}
-            <div className="flex items-center space-x-4 py-4">
+            <div className="flex items-center gap-4 py-4">
               <svg className="w-12 h-16 text-[#dc2626]" viewBox="0 0 24 36" fill="currentColor">
                 <path d="M12 0 C10 10 2 12 0 24 C5 22 8 18 10 14 C10 20 6 26 2 30 C8 28 11 22 12 18 Z" />
               </svg>
               <div className="text-center">
-                <span className="font-['Bebas_Neue'] text-7xl md:text-8xl font-black text-white leading-none red-text-glow">
+                <span className="font-display text-7xl md:text-8xl font-black text-white leading-none red-text-glow">
                   10<span className="text-[#dc2626]">+</span>
                 </span>
                 <p className="text-xs font-mono tracking-widest uppercase text-[#dc2626] font-bold mt-1">
@@ -50,7 +50,7 @@ const Awards = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => playSound?.('click')}
-              className="inline-flex items-center space-x-2 text-xs font-semibold tracking-widest uppercase text-white hover:text-[#dc2626] transition-colors pt-2 group"
+              className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-white hover:text-[#dc2626] transition-colors pt-2 group"
             >
               <span>VIEW CREDENTIALS &amp; VALIDATION</span>
               <ArrowUpRight className="w-4 h-4 text-[#dc2626] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -60,7 +60,7 @@ const Awards = () => {
           {/* Right Column: Awards Table List */}
           <div className="lg:col-span-7">
             <div className="flex justify-between items-center text-xs font-mono text-neutral-400 pb-3 border-b border-white/10 uppercase tracking-widest">
-              <span className="flex items-center space-x-2">
+              <span className="flex items-center gap-2">
                 <Trophy className="w-3.5 h-3.5 text-[#dc2626]" />
                 <span>SELECTED RECOGNITION</span>
               </span>
@@ -73,8 +73,8 @@ const Awards = () => {
                   key={award.id}
                   className="py-5 flex items-center justify-between group hover:bg-white/[0.02] px-3 rounded-lg transition-colors"
                 >
-                  <div className="flex items-center space-x-6">
-                    <span className="font-mono text-xs text-[#dc2626] font-bold">
+                  <div className="flex items-center gap-6">
+                    <span className="font-mono text-xs text-[#dc2626] font-bold shrink-0">
                       {award.id}
                     </span>
                     <div>
@@ -86,7 +86,7 @@ const Awards = () => {
                       </p>
                     </div>
                   </div>
-                  <span className="font-['Bebas_Neue'] text-2xl font-bold text-[#dc2626]">
+                  <span className="font-display text-2xl font-bold text-[#dc2626] shrink-0">
                     {award.year}
                   </span>
                 </div>

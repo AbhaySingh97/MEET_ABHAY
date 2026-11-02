@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, ArrowRight, ArrowUpRight, Play, Sparkles, X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PORTFOLIO_PROJECTS } from '../data/portfolioData';
@@ -21,7 +20,6 @@ const Projects = () => {
       })
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
-          // Merge dynamic data with category labels if missing
           const merged = data.map((p) => {
             const staticMatch = PORTFOLIO_PROJECTS.find((sp) => sp.id == p.id || sp._id == p._id);
             return {
@@ -106,11 +104,11 @@ const Projects = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="space-y-2">
-            <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-[#dc2626] font-semibold">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#dc2626] font-semibold">
               <span className="w-8 h-[2px] bg-[#dc2626]"></span>
               <span>01 / SELECTED WORK</span>
             </div>
-            <h2 className="font-['Bebas_Neue'] text-5xl md:text-7xl font-bold tracking-tight text-white leading-none">
+            <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-white leading-none">
               WORK THAT SPEAKS<span className="text-[#dc2626]">.</span>
             </h2>
             <p className="text-neutral-400 text-xs md:text-sm tracking-wide font-mono">
@@ -125,7 +123,7 @@ const Projects = () => {
               setSearchQuery('');
               playSound?.('click');
             }}
-            className="mt-4 md:mt-0 inline-flex items-center space-x-2 text-xs font-semibold tracking-widest uppercase text-neutral-400 hover:text-white transition-colors"
+            className="mt-4 md:mt-0 inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-neutral-400 hover:text-white transition-colors"
           >
             <span>ALL WORKS ({projects.length})</span>
             <ArrowRight className="w-4 h-4 text-[#dc2626]" />
@@ -136,7 +134,7 @@ const Projects = () => {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between border-b border-white/10 pb-4 mb-10 gap-4">
           
           {/* Tabs */}
-          <div className="flex items-center space-x-6 overflow-x-auto pb-2 scrollbar-none text-xs uppercase tracking-wider font-semibold">
+          <div className="flex items-center gap-8 overflow-x-auto pb-2 scrollbar-none text-xs uppercase tracking-wider font-semibold">
             {categories.map((cat) => {
               const isActive = activeCategory === cat.id;
               return (
@@ -224,20 +222,20 @@ const Projects = () => {
                   </div>
 
                   <div className="flex items-start justify-between">
-                    <div className="flex items-start space-x-3">
-                      <span className="font-['Bebas_Neue'] text-3xl font-bold text-[#dc2626] leading-none">
+                    <div className="flex items-start gap-3">
+                      <span className="font-display text-3xl font-bold text-[#dc2626] leading-none shrink-0">
                         {displayIndex}
                       </span>
                       <div>
-                        <h3 className="font-['Bebas_Neue'] text-2xl tracking-wide text-white group-hover:text-[#dc2626] transition-colors leading-tight">
+                        <h3 className="font-display text-xl tracking-wide text-white group-hover:text-[#dc2626] transition-colors line-clamp-1">
                           {project.title}
                         </h3>
-                        <p className="text-xs text-neutral-500 font-mono tracking-wider mt-0.5 uppercase">
-                          {project.categoryLabel} • {project.year || '2025'}
+                        <p className="text-xs text-neutral-500 font-mono tracking-wider mt-0.5">
+                          {project.categoryLabel || (is3d ? "3D" : "FULL STACK")} • {project.year || "2025"}
                         </p>
                       </div>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-[#dc2626] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all mt-1" />
+                    <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-[#dc2626] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 mt-1" />
                   </div>
                 </article>
               );
@@ -245,28 +243,27 @@ const Projects = () => {
           </div>
         )}
 
-        {/* Partner / Client / Tech Marquee Ticker */}
+        {/* Partner / Ecosystem Tools Strip */}
         <div className="mt-24 pt-12 border-t border-white/5">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 text-xs text-neutral-400">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 text-xs text-neutral-400 gap-3">
             <div className="space-y-0.5">
-              <span className="text-neutral-500 font-mono uppercase tracking-widest">BEEN PART OF / TOOLS OF THE CRAFT</span>
-              <p className="font-semibold text-neutral-300 tracking-wider font-mono">THE BIGGER PICTURE &amp; STACK.</p>
+              <span className="text-neutral-500 font-mono">BEEN PART OF / TOOLS OF THE CRAFT</span>
+              <p className="font-semibold text-neutral-300 tracking-wider">THE BIGGER PICTURE &amp; STACK.</p>
             </div>
-            <div className="flex items-center space-x-4 mt-3 sm:mt-0 font-mono text-neutral-400">
-              <span>EXPLORE ECOSYSTEM (10+)</span>
-              <div className="flex items-center space-x-1 text-neutral-500">
-                <button className="p-1 hover:text-white transition-colors"><ChevronLeft className="w-4 h-4" /></button>
-                <button className="p-1 hover:text-white transition-colors"><ChevronRight className="w-4 h-4" /></button>
+            <div className="flex items-center gap-4">
+              <span className="text-neutral-400 font-mono text-[11px]">EXPLORE ECOSYSTEM ({ecosystemTools.length}+)</span>
+              <div className="flex items-center gap-1 text-neutral-500">
+                <ChevronLeft className="w-4 h-4 cursor-pointer hover:text-white" />
+                <ChevronRight className="w-4 h-4 cursor-pointer hover:text-white" />
               </div>
             </div>
           </div>
 
-          {/* Logos / Stack Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center opacity-60 grayscale hover:grayscale-0 transition-all">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 items-center">
             {ecosystemTools.map((tool, i) => (
               <div
                 key={i}
-                className="h-12 flex items-center justify-center font-['Bebas_Neue'] text-xl font-bold tracking-widest text-neutral-400 hover:text-[#dc2626] border border-white/5 rounded-lg bg-white/[0.01] hover:bg-white/[0.04] transition-all cursor-default"
+                className="h-12 flex items-center justify-center font-display text-lg tracking-widest text-neutral-400 hover:text-white bg-white/[0.02] border border-white/5 rounded-lg hover:border-[#dc2626]/40 transition-all cursor-default"
               >
                 {tool}
               </div>
@@ -276,130 +273,113 @@ const Projects = () => {
 
       </div>
 
-      {/* Interactive Project Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <div 
-            onClick={(e) => {
-              if (e.target === e.currentTarget) {
-                closeProjectModal();
-              }
-            }}
-            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+      {/* Project Details Modal */}
+      {selectedProject && (
+        <div
+          onClick={closeProjectModal}
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-3xl bg-[#121215] border border-white/10 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-3xl bg-[#121215] border border-white/10 rounded-2xl overflow-hidden shadow-2xl my-8"
-            >
-              {/* Close Button */}
+            {/* Modal Header Image */}
+            <div className="relative aspect-video w-full bg-black">
+              <img
+                src={selectedProject.image}
+                alt={selectedProject.title}
+                className="w-full h-full object-cover"
+              />
               <button
                 onClick={closeProjectModal}
-                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/60 hover:bg-[#dc2626] text-white flex items-center justify-center border border-white/10 transition-colors"
+                className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/70 hover:bg-[#dc2626] text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
+                aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
               </button>
+              <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded text-xs font-mono text-white border border-white/20">
+                {selectedProject.categoryLabel || "FEATURED WORK"}
+              </div>
+            </div>
 
-              {/* Modal Image */}
-              <div className="relative aspect-video w-full bg-neutral-900 overflow-hidden">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#121215] via-transparent to-black/40"></div>
-                
-                <div className="absolute bottom-4 left-6">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#dc2626] bg-black/60 px-2 py-1 rounded border border-white/10">
-                    {selectedProject.categoryLabel}
-                  </span>
-                  <h3 className="font-['Bebas_Neue'] text-3xl md:text-4xl text-white font-bold tracking-wide mt-2">
-                    {selectedProject.title}
-                  </h3>
-                </div>
+            {/* Modal Content */}
+            <div className="p-8 space-y-6">
+              <div>
+                <h3 className="font-display text-3xl md:text-4xl text-white font-bold">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-xs font-mono text-[#dc2626] uppercase tracking-widest mt-1">
+                  YEAR {selectedProject.year || '2025'} • {selectedProject.role || 'CORE ARCHITECTURE & DESIGN'}
+                </p>
               </div>
 
-              {/* Modal Content */}
-              <div className="p-6 md:p-8 space-y-6">
-                <div>
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-[#dc2626] font-bold mb-2">
-                    OVERVIEW &amp; STORY
-                  </h4>
-                  <p className="text-sm text-neutral-300 leading-relaxed whitespace-pre-line">
-                    {selectedProject.fullDescription || selectedProject.description}
-                  </p>
-                </div>
+              <p className="text-sm md:text-base text-neutral-300 leading-relaxed">
+                {selectedProject.description}
+              </p>
 
-                {/* Achievements */}
-                {selectedProject.achievements && selectedProject.achievements.length > 0 && (
-                  <div>
-                    <h4 className="text-xs font-mono uppercase tracking-widest text-[#dc2626] font-bold mb-2">
-                      KEY HIGHLIGHTS &amp; MILESTONES
-                    </h4>
-                    <ul className="space-y-1.5 text-xs text-neutral-300 font-mono">
-                      {selectedProject.achievements.map((item, i) => (
-                        <li key={i} className="flex items-start space-x-2">
-                          <span className="text-[#dc2626] font-bold">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Tech Pills */}
-                <div>
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-neutral-400 font-bold mb-2">
-                    TECHNOLOGY &amp; TOOLS
-                  </h4>
-                  <div className="flex flex-wrap gap-2 text-xs">
-                    {selectedProject.tech?.map((t, i) => (
+              {/* Technologies */}
+              {selectedProject.tech && (
+                <div className="space-y-2">
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 block">
+                    TECH STACK &amp; PIPELINE
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tech.map((t, idx) => (
                       <span
-                        key={i}
-                        className="px-3 py-1 bg-white/5 border border-white/10 rounded text-neutral-300 font-mono text-[11px]"
+                        key={idx}
+                        className="px-3 py-1 bg-neutral-900 border border-white/10 rounded text-xs font-mono text-neutral-300"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
                 </div>
+              )}
 
-                {/* Action Buttons */}
-                <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-                  <Link
-                    to={`/project/${selectedProject.id}`}
-                    onClick={() => {
-                      document.body.style.overflow = 'auto';
-                    }}
-                    className="inline-flex items-center space-x-2 text-xs font-mono tracking-widest uppercase text-neutral-400 hover:text-white transition-colors"
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-white/10">
+                {selectedProject.live && selectedProject.live !== '#' && (
+                  <a
+                    href={selectedProject.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => playSound?.('click')}
+                    className="inline-flex items-center gap-2 bg-[#dc2626] hover:bg-red-700 text-white px-5 py-2.5 rounded text-xs font-semibold uppercase tracking-wider transition-colors"
                   >
-                    <span>OPEN FULL PROJECT PAGE</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#dc2626]" />
-                  </Link>
+                    <span>Launch Live App</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
 
-                  {selectedProject.link && selectedProject.link !== '#' && (
-                    <a
-                      href={selectedProject.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-2 bg-[#dc2626] hover:bg-red-700 text-white px-5 py-2.5 rounded-md text-xs font-bold tracking-widest uppercase transition-all shadow-lg"
-                    >
-                      <span>
-                        {selectedProject.category === '3d'
-                          ? 'VIEW ON ARTSTATION'
-                          : 'LAUNCH LIVE PROJECT'}
-                      </span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                </div>
+                {selectedProject.github && selectedProject.github !== '#' && (
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => playSound?.('click')}
+                    className="inline-flex items-center gap-2 bg-neutral-900 hover:bg-neutral-800 text-white border border-white/10 px-5 py-2.5 rounded text-xs font-semibold uppercase tracking-wider transition-colors"
+                  >
+                    <span>Inspect Repository</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
 
+                <Link
+                  to={`/project/${selectedProject.id}`}
+                  onClick={() => {
+                    closeProjectModal();
+                    playSound?.('click');
+                  }}
+                  className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-white uppercase tracking-wider font-semibold ml-auto"
+                >
+                  <span>Detailed Case Study</span>
+                  <ArrowRight className="w-4 h-4 text-[#dc2626]" />
+                </Link>
               </div>
-            </motion.div>
+            </div>
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
     </section>
   );
 };

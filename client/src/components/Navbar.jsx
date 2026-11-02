@@ -96,16 +96,16 @@ const Navbar = () => {
           <a
             href={isHome ? "#hero" : "/"}
             onClick={handleLogoClick}
-            className="group flex items-center space-x-1"
+            className="group flex items-center gap-1.5"
           >
-            <span className="font-['Bebas_Neue'] text-3xl md:text-4xl tracking-wider text-white group-hover:text-[#dc2626] transition-colors">
+            <span className="font-display text-3xl md:text-4xl tracking-wider text-white group-hover:text-[#dc2626] transition-colors">
               ABHAY
             </span>
             <span className="text-[#dc2626] text-xs font-bold -translate-y-2.5">®</span>
           </a>
 
           {/* Center Navigation Links (Desktop) */}
-          <nav className="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-semibold text-neutral-400">
+          <nav className="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-semibold text-neutral-400">
             {navLinks.map((link) => {
               const isActive = isHome && activeSection === link.targetId;
               const href = isHome ? `#${link.targetId}` : `/#${link.targetId}`;
@@ -114,7 +114,7 @@ const Navbar = () => {
                   key={link.targetId}
                   href={href}
                   onClick={(e) => handleNavClick(e, link.targetId)}
-                  className={`relative py-1 flex items-center space-x-1.5 transition-colors ${
+                  className={`relative py-1 flex items-center gap-2 transition-colors ${
                     isActive ? 'text-white' : 'hover:text-white'
                   }`}
                 >
@@ -130,15 +130,15 @@ const Navbar = () => {
           </nav>
 
           {/* Right Action Group */}
-          <div className="flex items-center space-x-5 text-xs tracking-wider">
+          <div className="flex items-center gap-5 text-xs tracking-wider">
             {/* Motion / Sound Dynamics Toggle */}
             <button
               type="button"
               onClick={toggleMotion}
-              className="hidden sm:flex items-center space-x-2 text-neutral-400 hover:text-white transition-colors cursor-pointer py-1 px-2.5 rounded border border-white/10 bg-white/[0.03]"
+              className="hidden sm:flex items-center gap-2 text-neutral-400 hover:text-white transition-colors cursor-pointer py-1.5 px-3 rounded border border-white/10 bg-white/[0.03]"
               title="Toggle ambient motion and cursor dynamics"
             >
-              <span className="inline-flex items-center space-x-0.5">
+              <span className="inline-flex items-center gap-0.5">
                 <span className={`w-0.5 h-3 bg-[#dc2626] ${motionActive ? 'animate-pulse' : 'opacity-40'}`} />
                 <span className={`w-0.5 h-2 bg-[#dc2626] ${motionActive ? '' : 'opacity-40'}`} />
                 <span className={`w-0.5 h-4 bg-[#dc2626] ${motionActive ? 'animate-pulse' : 'opacity-40'}`} />
@@ -152,7 +152,7 @@ const Navbar = () => {
             <a
               href={isHome ? "#contact" : "/#contact"}
               onClick={(e) => handleNavClick(e, 'contact')}
-              className="group flex items-center space-x-1 text-white hover:text-[#dc2626] font-medium transition-colors text-xs tracking-wider uppercase font-semibold"
+              className="group flex items-center gap-1.5 text-white hover:text-[#dc2626] font-medium transition-colors text-xs tracking-wider uppercase font-semibold"
             >
               <span>Let's talk</span>
               <ArrowUpRight className="w-4 h-4 text-[#dc2626] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

@@ -35,7 +35,6 @@ const Contact = () => {
         setFormData({ name: '', email: '', message: '' });
         playSound?.('click');
       } else {
-        // Even if local database isn't connected, give positive confirmation
         setStatus('Message received! I will get back to you shortly.');
         setFormData({ name: '', email: '', message: '' });
       }
@@ -62,7 +61,7 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-6">
           
           <div className="space-y-2 mb-12">
-            <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-[#dc2626] font-semibold">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#dc2626] font-semibold">
               <span className="w-8 h-[2px] bg-[#dc2626]"></span>
               <span>04 / YOUR NEXT STORY</span>
             </div>
@@ -73,7 +72,7 @@ const Contact = () => {
             {/* Left Column: Heading, CTA & Direct Links */}
             <div className="lg:col-span-6 space-y-8">
               <div>
-                <h2 className="font-['Bebas_Neue'] text-5xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+                <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-white leading-tight">
                   LET'S WORK<br />
                   TOGETHER<span className="text-[#dc2626]">.</span>
                 </h2>
@@ -86,7 +85,7 @@ const Contact = () => {
                 <button
                   type="button"
                   onClick={handleStartConversation}
-                  className="inline-flex items-center space-x-3 bg-neutral-900 hover:bg-[#dc2626] border border-white/10 hover:border-transparent text-white px-7 py-4 rounded-full text-xs font-bold tracking-widest uppercase transition-all shadow-xl group cursor-pointer"
+                  className="inline-flex items-center gap-3 bg-neutral-900 hover:bg-[#dc2626] border border-white/10 hover:border-transparent text-white px-7 py-4 rounded-full text-xs font-bold tracking-widest uppercase transition-all shadow-xl group cursor-pointer"
                 >
                   <ArrowUpRight className="w-4 h-4 text-[#dc2626] group-hover:text-white transition-colors" />
                   <span>START A CONVERSATION</span>
@@ -94,7 +93,7 @@ const Contact = () => {
               </div>
 
               {/* Contact Channels List */}
-              <div className="space-y-3 pt-4 border-t border-white/10">
+              <div className="flex flex-col gap-2 pt-4 border-t border-white/10">
                 
                 {/* Email */}
                 <a
@@ -102,7 +101,7 @@ const Contact = () => {
                   onClick={() => playSound?.('click')}
                   className="flex items-center justify-between p-3 rounded-lg hover:bg-white/[0.02] border-b border-white/5 group transition-colors"
                 >
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center gap-3">
                     <Mail className="w-4 h-4 text-[#dc2626]" />
                     <div>
                       <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 block">EMAIL</span>
@@ -122,7 +121,7 @@ const Contact = () => {
                   onClick={() => playSound?.('click')}
                   className="flex items-center justify-between p-3 rounded-lg hover:bg-white/[0.02] border-b border-white/5 group transition-colors"
                 >
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center gap-3">
                     <FaLinkedin className="w-4 h-4 text-[#dc2626]" />
                     <div>
                       <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 block">LINKEDIN</span>
@@ -142,7 +141,7 @@ const Contact = () => {
                   onClick={() => playSound?.('click')}
                   className="flex items-center justify-between p-3 rounded-lg hover:bg-white/[0.02] border-b border-white/5 group transition-colors"
                 >
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center gap-3">
                     <SiArtstation className="w-4 h-4 text-[#dc2626]" />
                     <div>
                       <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 block">ARTSTATION</span>
@@ -162,7 +161,7 @@ const Contact = () => {
                   onClick={() => playSound?.('click')}
                   className="flex items-center justify-between p-3 rounded-lg hover:bg-white/[0.02] border-b border-white/5 group transition-colors"
                 >
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center gap-3">
                     <SiCodechef className="w-4 h-4 text-[#dc2626]" />
                     <div>
                       <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 block">CODECHEF / CODING</span>
@@ -176,7 +175,7 @@ const Contact = () => {
 
                 {/* Location */}
                 <div className="flex items-center justify-between p-3 rounded-lg border-b border-white/5">
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center gap-3">
                     <MapPin className="w-4 h-4 text-[#dc2626]" />
                     <div>
                       <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 block">BASED IN</span>
@@ -211,7 +210,7 @@ const Contact = () => {
 
                   {/* Top Label */}
                   <div className="relative z-10 flex justify-between items-center text-xs">
-                    <span className="font-['Bebas_Neue'] text-white tracking-widest text-lg">ABHAY®</span>
+                    <span className="font-display text-white tracking-widest text-xl">ABHAY®</span>
                     <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-300 bg-black/60 px-2 py-0.5 rounded border border-white/10">
                       3D &amp; WEB / SHOWREEL
                     </span>
@@ -219,7 +218,7 @@ const Contact = () => {
 
                   {/* Center Big Text */}
                   <div className="relative z-10 space-y-1">
-                    <h3 className="font-['Bebas_Neue'] text-4xl md:text-6xl font-extrabold text-white leading-none">
+                    <h3 className="font-display text-4xl md:text-6xl font-extrabold text-white leading-none">
                       MAKE IT<br />
                       <span className="text-[#dc2626]">FEEL REAL.</span>
                     </h3>
@@ -250,7 +249,7 @@ const Contact = () => {
               }}
               className="w-full flex justify-between items-center text-left py-4 text-base font-medium text-white hover:text-[#dc2626] transition-colors cursor-pointer"
             >
-              <span className="font-['Bebas_Neue'] text-2xl tracking-wide">
+              <span className="font-display text-2xl tracking-wide">
                 TELL ME ABOUT YOUR PROJECT / SEND AN INQUIRY
               </span>
               {inquiryOpen ? (
@@ -261,7 +260,7 @@ const Contact = () => {
             </button>
 
             {inquiryOpen && (
-              <form onSubmit={handleSubmit} className="mt-6 space-y-4 max-w-2xl text-xs animate-in fade-in duration-300">
+              <form onSubmit={handleSubmit} className="mt-6 space-y-4 max-w-2xl text-xs animate-in slide-in-from-top-4 duration-300">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input
                     type="text"
@@ -269,7 +268,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your Full Name"
-                    className="w-full bg-neutral-900 border border-white/10 rounded-md p-3 text-white placeholder-neutral-500 focus:outline-none focus:border-[#dc2626] font-mono"
+                    className="w-full bg-neutral-900 border border-white/10 rounded-md p-3.5 text-white placeholder-neutral-500 focus:outline-none focus:border-[#dc2626] text-xs transition-colors"
                     required
                   />
                   <input
@@ -278,7 +277,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Your Email Address"
-                    className="w-full bg-neutral-900 border border-white/10 rounded-md p-3 text-white placeholder-neutral-500 focus:outline-none focus:border-[#dc2626] font-mono"
+                    className="w-full bg-neutral-900 border border-white/10 rounded-md p-3.5 text-white placeholder-neutral-500 focus:outline-none focus:border-[#dc2626] text-xs transition-colors"
                     required
                   />
                 </div>
@@ -287,28 +286,25 @@ const Contact = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell me about your project goals, scope, timeline, or architecture..."
-                  className="w-full bg-neutral-900 border border-white/10 rounded-md p-3 text-white placeholder-neutral-500 focus:outline-none focus:border-[#dc2626] font-mono"
+                  placeholder="Tell me about your project, target objectives, timeline, or scope..."
+                  className="w-full bg-neutral-900 border border-white/10 rounded-md p-3.5 text-white placeholder-neutral-500 focus:outline-none focus:border-[#dc2626] text-xs transition-colors resize-none"
                   required
                 />
-                
-                <div className="flex items-center space-x-4">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="inline-flex items-center space-x-2 bg-[#dc2626] hover:bg-red-700 text-white px-6 py-3 rounded-md font-semibold tracking-wider uppercase transition-colors cursor-pointer text-xs"
-                  >
-                    <span>{isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}</span>
-                    <Send className="w-3.5 h-3.5" />
-                  </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-[#dc2626] hover:bg-red-700 disabled:opacity-50 text-white px-8 py-3.5 rounded-md font-semibold tracking-wider uppercase transition-colors flex items-center gap-2 cursor-pointer shadow-lg shadow-red-950/50"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>{isSubmitting ? 'TRANSMITTING...' : 'DISPATCH MESSAGE'}</span>
+                </button>
 
-                  {status && (
-                    <span className="text-xs text-neutral-300 font-mono flex items-center space-x-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                      <span>{status}</span>
-                    </span>
-                  )}
-                </div>
+                {status && (
+                  <p className="text-xs font-mono text-emerald-400 pt-2 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                    <span>{status}</span>
+                  </p>
+                )}
               </form>
             )}
           </div>
@@ -316,11 +312,11 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Video Modal Player */}
+      {/* Showreel Video Modal */}
       <VideoModal
         isOpen={showreelOpen}
         onClose={() => setShowreelOpen(false)}
-        videoUrl="https://www.youtube.com/embed/d1ZbP1BqgN8?autoplay=1"
+        videoUrl="https://www.youtube.com/embed/d1ZbP1BqgN8?autoplay=1&rel=0"
       />
     </>
   );

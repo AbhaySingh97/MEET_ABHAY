@@ -1,5 +1,4 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { Sliders, Eye, Sparkles } from 'lucide-react';
 import useSound from '../hooks/useSound';
 
 const RawToReal = () => {
@@ -24,7 +23,7 @@ const RawToReal = () => {
       try {
         e.currentTarget.setPointerCapture(e.pointerId);
       } catch {
-        // Fallback gracefully if pointer capture is not supported
+        // Fallback gracefully
       }
     }
     handleMove(e.clientX);
@@ -67,12 +66,12 @@ const RawToReal = () => {
           
           {/* Left Explanatory Text */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-neutral-400 font-mono">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 font-mono">
               <span className="w-6 h-[2px] bg-[#dc2626]"></span>
               <span>A LOOK UNDER THE SURFACE</span>
             </div>
             
-            <h2 className="font-['Bebas_Neue'] text-5xl md:text-7xl font-bold tracking-tight text-white leading-none">
+            <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-white leading-none">
               FROM RAW.<br />
               <span className="text-[#dc2626]">TO REAL.</span>
             </h2>
@@ -90,7 +89,7 @@ const RawToReal = () => {
             </div>
 
             <div className="pt-4 border-t border-white/10 space-y-1.5 text-xs font-mono text-neutral-400">
-              <p className="text-white font-semibold tracking-wider flex items-center space-x-2">
+              <p className="text-white font-semibold tracking-wider flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#dc2626]"></span>
                 <span>NEON DRIFT &amp; ARCHVIZ | 2025</span>
               </p>
@@ -100,7 +99,7 @@ const RawToReal = () => {
             </div>
 
             {/* Quick Toggle Presets */}
-            <div className="pt-2 flex items-center space-x-2 text-xs font-mono">
+            <div className="pt-2 flex items-center gap-2 text-xs font-mono">
               <button
                 type="button"
                 onClick={() => {
@@ -181,18 +180,18 @@ const RawToReal = () => {
               >
                 <img 
                   src="/neon-drift.jpg" 
-                  alt="Solid Clay View" 
+                  alt="Solid Clay View - Neon Drift" 
                   className="w-full h-full object-cover filter grayscale contrast-150 brightness-75"
                   onError={(e) => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?fit=crop&w=1200&q=80";
                   }}
                 />
                 
-                {/* 3D Wireframe Grid Overlay on Clay */}
+                {/* 3D Wireframe Grid Graphic Overlay to simulate true Solid Topology */}
                 <div 
-                  className="absolute inset-0 pointer-events-none opacity-30 mix-blend-overlay"
+                  className="absolute inset-0 opacity-25 pointer-events-none"
                   style={{
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
+                    backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 1px)',
                     backgroundSize: '24px 24px'
                   }}
                 />
@@ -202,22 +201,22 @@ const RawToReal = () => {
                 </div>
               </div>
 
-              {/* Draggable Divider Line & Knob */}
+              {/* Draggable Divider Handle */}
               <div 
-                className="absolute top-0 bottom-0 w-[2px] bg-[#dc2626] z-20 flex items-center justify-center transition-none shadow-[0_0_15px_#dc2626] pointer-events-none"
+                className="absolute top-0 bottom-0 w-[2px] bg-[#dc2626] pointer-events-none z-20 flex items-center justify-center transition-none shadow-[0_0_15px_#dc2626]"
                 style={{ left: `${sliderPosition}%` }}
               >
-                <div className="w-10 h-10 rounded-full bg-[#dc2626] text-white flex items-center justify-center shadow-2xl text-xs font-bold border-2 border-white/80 group-hover:scale-110 transition-transform">
+                <div className="w-9 h-9 rounded-full bg-[#dc2626] text-white flex items-center justify-center shadow-2xl text-[10px] font-bold border-2 border-white/50 transform group-hover:scale-110 transition-transform">
                   &lt; &gt;
                 </div>
               </div>
 
             </div>
 
-            {/* Slider Instruction */}
-            <div className="flex justify-between items-center mt-3 text-[11px] font-mono text-neutral-500 uppercase tracking-widest px-1">
-              <span className="flex items-center space-x-1.5">
-                <Sliders className="w-3.5 h-3.5 text-[#dc2626]" />
+            {/* Slider Instructions */}
+            <div className="flex justify-between items-center mt-3 text-[11px] font-mono text-neutral-400 uppercase tracking-widest px-1">
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-2 h-2 rounded-full bg-[#dc2626]"></span>
                 <span>DRAG SLIDER TO REVEAL PROCESS</span>
               </span>
               <span>CLAY MESH / FINAL RENDER</span>

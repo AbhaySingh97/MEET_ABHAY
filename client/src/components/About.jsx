@@ -38,11 +38,11 @@ const About = () => {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
           <div className="space-y-2">
-            <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-[#dc2626] font-semibold">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#dc2626] font-semibold">
               <span className="w-8 h-[2px] bg-[#dc2626]"></span>
               <span>02 / BEHIND THE FRAMES</span>
             </div>
-            <h2 className="font-['Bebas_Neue'] text-5xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+            <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-white leading-tight">
               NOT JUST CODE.<br />
               A WAY TO TELL <span className="text-[#dc2626]">STORIES.</span>
             </h2>
@@ -58,7 +58,7 @@ const About = () => {
           
           {/* Column 1: Education & Skills */}
           <div className="lg:col-span-4 space-y-8">
-            <h3 className="font-['Bebas_Neue'] text-2xl tracking-wider text-white uppercase border-b border-white/10 pb-2 flex items-center justify-between">
+            <h3 className="font-display text-2xl tracking-wider text-white uppercase border-b border-white/10 pb-2 flex items-center justify-between">
               <span>EDUCATION &amp; SKILLS</span>
               <GraduationCap className="w-5 h-5 text-[#dc2626]" />
             </h3>
@@ -121,7 +121,7 @@ const About = () => {
 
           {/* Column 2: 4-Step Pipeline (From Idea to Final Frame) */}
           <div className="lg:col-span-5 space-y-6">
-            <h3 className="font-['Bebas_Neue'] text-2xl tracking-wider text-white uppercase border-b border-white/10 pb-2">
+            <h3 className="font-display text-2xl tracking-wider text-white uppercase border-b border-white/10 pb-2">
               FROM IDEA TO FINAL FRAME
             </h3>
 
@@ -129,8 +129,8 @@ const About = () => {
               {steps.map((step) => (
                 <div key={step.num} className="relative space-y-1.5 group">
                   <span className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#dc2626] ring-4 ring-[#0a0a0c] group-hover:scale-125 transition-transform" />
-                  <div className="flex items-center space-x-2">
-                    <span className="font-['Bebas_Neue'] text-[#dc2626] text-2xl font-bold leading-none">
+                  <div className="flex items-center gap-3">
+                    <span className="font-display text-[#dc2626] text-2xl font-bold leading-none shrink-0">
                       {step.num}
                     </span>
                     <h4 className="font-semibold text-white text-sm uppercase tracking-wide">
@@ -157,7 +157,7 @@ const About = () => {
               </p>
 
               <div className="pt-8 border-t border-white/10 mt-6">
-                <span className="font-['Caveat'] text-3xl md:text-4xl text-neutral-100 block">
+                <span className="font-script text-3xl md:text-4xl text-neutral-100 block">
                   Abhay Singh Chauhan
                 </span>
                 <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-400 block mt-1">
